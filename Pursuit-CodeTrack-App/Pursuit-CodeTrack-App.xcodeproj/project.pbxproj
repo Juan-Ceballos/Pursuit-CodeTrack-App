@@ -15,6 +15,7 @@
 		3E1C97772B68C2FC0092A196 /* Pursuit_CodeTrack_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97762B68C2FC0092A196 /* Pursuit_CodeTrack_AppTests.swift */; };
 		3E1C97812B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97802B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITests.swift */; };
 		3E1C97832B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97822B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITestsLaunchTests.swift */; };
+		3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C978F2B818E410092A196 /* CodeTrackURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3E1C977C2B68C2FC0092A196 /* Pursuit-CodeTrack-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pursuit-CodeTrack-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1C97802B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pursuit_CodeTrack_AppUITests.swift; sourceTree = "<group>"; };
 		3E1C97822B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pursuit_CodeTrack_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3E1C978F2B818E410092A196 /* CodeTrackURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTrackURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				3E1C97682B68C2FC0092A196 /* Assets.xcassets */,
 				3E1C976A2B68C2FC0092A196 /* LaunchScreen.storyboard */,
 				3E1C976D2B68C2FC0092A196 /* Info.plist */,
+				3E1C978F2B818E410092A196 /* CodeTrackURL.swift */,
 			);
 			path = "Pursuit-CodeTrack-App";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */,
 				3E1C97642B68C2F40092A196 /* ViewController.swift in Sources */,
 				3E1C97602B68C2F30092A196 /* AppDelegate.swift in Sources */,
 				3E1C97622B68C2F40092A196 /* SceneDelegate.swift in Sources */,
