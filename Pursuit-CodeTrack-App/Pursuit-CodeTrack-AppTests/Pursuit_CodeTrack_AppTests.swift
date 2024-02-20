@@ -10,6 +10,8 @@ import XCTest
 
 final class Pursuit_CodeTrack_AppTests: XCTestCase {
     
+    let codeTrackAPI = CodeTrackAPI()
+    
     func testFecthOrgPursuitData() async {
         let exp = XCTestExpectation(description: "Org Pursuit Data Fetched")
         let baseURLOrgPursuitStr = CodeTrackURL.orgPursuit
@@ -51,6 +53,19 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         }
         
         await fulfillment(of: [exp], timeout: 10)
+    }
+    
+    func parseScoreboardDataModel() async {
+        let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
+        Task {
+            do {
+                let scoreBoardModel = try await codeTrackAPI.fetchScoreboard()
+                // try grabbing model prop
+            } catch {
+                
+            }
+        }
+        
     }
 
 }
