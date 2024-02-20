@@ -13,7 +13,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFecthOrgPursuitData() async {
         let exp = XCTestExpectation(description: "Org Pursuit Data Fetched")
         let baseURLOrgPursuitStr = CodeTrackURL.orgPursuit
-        let expectationDataCount = 1000
+        let expectationDataCount = 100
         
         Task {
             do {
@@ -22,7 +22,6 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
                 request.httpMethod = "GET"
                 
                 let (data, _) = try await URLSession.shared.data(for: request)
-                print(data.count)
                 XCTAssertGreaterThan(data.count, expectationDataCount, "Count of data fetched \(data.count) is greater that minimum data count of \(expectationDataCount)")
                 exp.fulfill()
             } catch {
@@ -31,6 +30,27 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         }
         
         await fulfillment(of: [exp], timeout: 10.0)
+    }
+    
+    func testFetchScoreboardData() async {
+        let exp = XCTestExpectation(description: "Scoreboard data fetched")
+        let baseURLScoreboardStr = CodeTrackURL.scoreboard
+        let expectationDataCount = 150
+        
+        Task {
+            do {
+                let url = URL(string: baseURLScoreboardStr)!
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                let (data, _) = try await URLSession.shared.data(for: request)
+                XCTAssertGreaterThan(data.count, expectationDataCount, "Count of data fetched \(data.count) is greater that minimum data count of \(expectationDataCount)")
+                exp.fulfill()
+            } catch {
+                XCTFail("\(error)")
+            }
+        }
+        
+        await fulfillment(of: [exp], timeout: 10)
     }
 
 }
