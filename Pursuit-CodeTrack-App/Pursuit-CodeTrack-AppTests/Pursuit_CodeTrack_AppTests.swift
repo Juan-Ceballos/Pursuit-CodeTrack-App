@@ -55,17 +55,21 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
     
-    func parseScoreboardDataModel() async {
+    func testParseScoreboardDataModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
+        let expectedScoreboardOrganization = "pursuit"
         Task {
             do {
                 let scoreBoardModel = try await codeTrackAPI.fetchScoreboard()
-                // try grabbing model prop
+                let scoreBoardOrganization = scoreBoardModel.organization
+                XCTAssertEqual(expectedScoreboardOrganization, scoreBoardOrganization, "expected string \(expectedScoreboardOrganization) to equal string from model \(scoreBoardOrganization)")
+                exp.fulfill()
             } catch {
-                
+                XCTFail("\(error)")
             }
         }
         
+        await fulfillment(of: [exp], timeout: 10)
     }
 
 }

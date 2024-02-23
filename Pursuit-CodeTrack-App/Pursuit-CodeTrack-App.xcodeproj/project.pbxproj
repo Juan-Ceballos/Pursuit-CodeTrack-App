@@ -18,6 +18,7 @@
 		3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C978F2B818E410092A196 /* CodeTrackURL.swift */; };
 		3E1C97922B848AC70092A196 /* CodeTrackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97912B848AC70092A196 /* CodeTrackAPI.swift */; };
 		3E1C97942B848B0B0092A196 /* ScoreboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97932B848B0B0092A196 /* ScoreboardModel.swift */; };
+		3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97952B881D6E0092A196 /* StandingsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3E1C978F2B818E410092A196 /* CodeTrackURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTrackURL.swift; sourceTree = "<group>"; };
 		3E1C97912B848AC70092A196 /* CodeTrackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTrackAPI.swift; sourceTree = "<group>"; };
 		3E1C97932B848B0B0092A196 /* ScoreboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardModel.swift; sourceTree = "<group>"; };
+		3E1C97952B881D6E0092A196 /* StandingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +105,13 @@
 		3E1C975E2B68C2F30092A196 /* Pursuit-CodeTrack-App */ = {
 			isa = PBXGroup;
 			children = (
-				3E1C975F2B68C2F30092A196 /* AppDelegate.swift */,
-				3E1C97612B68C2F40092A196 /* SceneDelegate.swift */,
-				3E1C97632B68C2F40092A196 /* ViewController.swift */,
+				3E1C979A2B8820250092A196 /* ViewControllers */,
+				3E1C97992B88200A0092A196 /* Network */,
+				3E1C97982B881FEA0092A196 /* SupportingFiles */,
+				3E1C97972B881FD10092A196 /* Models */,
 				3E1C97682B68C2FC0092A196 /* Assets.xcassets */,
 				3E1C976A2B68C2FC0092A196 /* LaunchScreen.storyboard */,
 				3E1C976D2B68C2FC0092A196 /* Info.plist */,
-				3E1C978F2B818E410092A196 /* CodeTrackURL.swift */,
-				3E1C97912B848AC70092A196 /* CodeTrackAPI.swift */,
-				3E1C97932B848B0B0092A196 /* ScoreboardModel.swift */,
 			);
 			path = "Pursuit-CodeTrack-App";
 			sourceTree = "<group>";
@@ -131,6 +131,41 @@
 				3E1C97822B68C2FC0092A196 /* Pursuit_CodeTrack_AppUITestsLaunchTests.swift */,
 			);
 			path = "Pursuit-CodeTrack-AppUITests";
+			sourceTree = "<group>";
+		};
+		3E1C97972B881FD10092A196 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E1C97932B848B0B0092A196 /* ScoreboardModel.swift */,
+				3E1C97952B881D6E0092A196 /* StandingsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3E1C97982B881FEA0092A196 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3E1C97612B68C2F40092A196 /* SceneDelegate.swift */,
+				3E1C975F2B68C2F30092A196 /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		3E1C97992B88200A0092A196 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3E1C978F2B818E410092A196 /* CodeTrackURL.swift */,
+				3E1C97912B848AC70092A196 /* CodeTrackAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3E1C979A2B8820250092A196 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E1C97632B68C2F40092A196 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */,
+				3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */,
 				3E1C97642B68C2F40092A196 /* ViewController.swift in Sources */,
 				3E1C97922B848AC70092A196 /* CodeTrackAPI.swift in Sources */,
 				3E1C97942B848B0B0092A196 /* ScoreboardModel.swift in Sources */,
