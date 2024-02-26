@@ -7,13 +7,13 @@
 
 import Foundation
 
-class CodeTrackAPI {
-    func fetchScoreboard() async throws -> ScoreboardModel {
-        let url = URL(string: CodeTrackURL.scoreboard)!
+class CodeTrackAPI<T: Decodable> {
+    func fetchScoreboard(_ urlStr: String) async throws -> T {
+        let url = URL(string: urlStr)!
         var request = URLRequest(url: url)
         request.httpMethod = "Get"
         let (data, _) = try await URLSession.shared.data(for: request)
         let decoder = JSONDecoder()
-        return try decoder.decode(ScoreboardModel.self, from: data)
+        return try decoder.decode(T.self, from: data)
     }
 }

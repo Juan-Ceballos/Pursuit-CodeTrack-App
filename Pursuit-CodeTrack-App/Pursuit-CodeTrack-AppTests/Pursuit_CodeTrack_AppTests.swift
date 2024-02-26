@@ -10,8 +10,6 @@ import XCTest
 
 final class Pursuit_CodeTrack_AppTests: XCTestCase {
     
-    let codeTrackAPI = CodeTrackAPI()
-    
     func testFecthOrgPursuitData() async {
         let exp = XCTestExpectation(description: "Org Pursuit Data Fetched")
         let baseURLOrgPursuitStr = CodeTrackURL.orgPursuit
@@ -58,9 +56,10 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testParseScoreboardDataModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedScoreboardOrganization = "pursuit"
+        let codeTrackAPI = CodeTrackAPI<ScoreboardModel>()
         Task {
             do {
-                let scoreBoardModel = try await codeTrackAPI.fetchScoreboard()
+                let scoreBoardModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.scoreboard)
                 let scoreBoardOrganization = scoreBoardModel.organization
                 XCTAssertEqual(expectedScoreboardOrganization, scoreBoardOrganization, "expected string \(expectedScoreboardOrganization) to equal string from model \(scoreBoardOrganization)")
                 exp.fulfill()

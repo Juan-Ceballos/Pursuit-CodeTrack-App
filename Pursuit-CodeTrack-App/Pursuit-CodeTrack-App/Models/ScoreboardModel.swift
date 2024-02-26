@@ -20,7 +20,7 @@ struct ScoreboardModel: Decodable {
         case fellowsThisWeek = "fellows_this_week"
         case fellowsThisMonth = "fellows_this_month"
         case fellowsAllTime = "fellows_all_time"
-        case staffAllTime = "staff_All_time"
+        case staffAllTime = "staff_all_time"
         case organization
     }
 }
