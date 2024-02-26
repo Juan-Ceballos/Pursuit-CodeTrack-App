@@ -89,5 +89,44 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
 
+    // Update this test each time there's a new cohort
+    func testFetchUsersModel() async {
+        let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
+        let expectedUsersCount = 511
+        let codeTrackAPI = CodeTrackAPI<UsersModel>()
+        Task {
+            do {
+                let usersModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.users)
+                let usersCount = usersModel.users.count
+                XCTAssertEqual(expectedUsersCount, usersCount, "expected int \(expectedUsersCount) to equal int from model \(usersCount)")
+                exp.fulfill()
+            } catch {
+                XCTFail("\(error)")
+            }
+        }
+        
+        await fulfillment(of: [exp], timeout: 10)
+    }
+    
+    // Update this test when change in staff
+    func testFetchUsersStaffModel() async {
+        let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
+        let expectedUsersStaffCount = 20
+        let codeTrackAPI = CodeTrackAPI<UsersStaffModel>()
+        Task {
+            do {
+                let usersStaffModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.role)
+                let usersStaffCount = usersStaffModel.users.count
+                XCTAssertEqual(expectedUsersStaffCount, usersStaffCount, "expected int \(expectedUsersStaffCount) to equal int from model \(usersStaffCount)")
+                exp.fulfill()
+            } catch {
+                XCTFail("\(error)")
+            }
+        }
+        
+        await fulfillment(of: [exp], timeout: 10)
+    }
+
+    
 
 }
