@@ -8,10 +8,10 @@
 import Foundation
 
 struct StandingsModelWrapper: Decodable {
-    let StandingsModel: [Standing]
+    let StandingsModels: [StandingsModel]
 }
 
-struct Standing: Decodable {
+struct StandingsModel: Decodable {
     let id: String
     let data: [StandingCoordinate]
 }

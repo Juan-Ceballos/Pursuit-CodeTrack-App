@@ -53,7 +53,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
     
-    func testParseScoreboardDataModel() async {
+    func testFetchScoreboardModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedScoreboardOrganization = "pursuit"
         let codeTrackAPI = CodeTrackAPI<ScoreboardModel>()
@@ -70,5 +70,24 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         
         await fulfillment(of: [exp], timeout: 10)
     }
+    
+    func testFetchStandingsModel() async {
+        let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
+        let expectedStandingCount = 17
+        let codeTrackAPI = CodeTrackAPI<[StandingsModel]>()
+        Task {
+            do {
+                let standingsModelsWrapper = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.standings)
+                let standingsCount = standingsModelsWrapper.count
+                XCTAssertEqual(expectedStandingCount, standingsCount, "expected int \(expectedStandingCount) to equal int from model \(standingsCount)")
+                exp.fulfill()
+            } catch {
+                XCTFail("\(error)")
+            }
+        }
+        
+        await fulfillment(of: [exp], timeout: 10)
+    }
+
 
 }
