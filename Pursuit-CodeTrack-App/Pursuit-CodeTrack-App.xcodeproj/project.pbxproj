@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E1C97602B68C2F30092A196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C975F2B68C2F30092A196 /* AppDelegate.swift */; };
 		3E1C97622B68C2F40092A196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97612B68C2F40092A196 /* SceneDelegate.swift */; };
-		3E1C97642B68C2F40092A196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97632B68C2F40092A196 /* ViewController.swift */; };
+		3E1C97642B68C2F40092A196 /* UserScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97632B68C2F40092A196 /* UserScoresViewController.swift */; };
 		3E1C97692B68C2FC0092A196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E1C97682B68C2FC0092A196 /* Assets.xcassets */; };
 		3E1C976C2B68C2FC0092A196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E1C976A2B68C2FC0092A196 /* LaunchScreen.storyboard */; };
 		3E1C97772B68C2FC0092A196 /* Pursuit_CodeTrack_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97762B68C2FC0092A196 /* Pursuit_CodeTrack_AppTests.swift */; };
@@ -45,7 +45,7 @@
 		3E1C975C2B68C2F30092A196 /* Pursuit-CodeTrack-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuit-CodeTrack-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1C975F2B68C2F30092A196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E1C97612B68C2F40092A196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3E1C97632B68C2F40092A196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3E1C97632B68C2F40092A196 /* UserScoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoresViewController.swift; sourceTree = "<group>"; };
 		3E1C97682B68C2FC0092A196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E1C976B2B68C2FC0092A196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E1C976D2B68C2FC0092A196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		3E1C975E2B68C2F30092A196 /* Pursuit-CodeTrack-App */ = {
 			isa = PBXGroup;
 			children = (
-				3E1C979A2B8820250092A196 /* ViewControllers */,
+				3E1C979A2B8820250092A196 /* Controllers */,
 				3E1C97992B88200A0092A196 /* Network */,
 				3E1C97982B881FEA0092A196 /* SupportingFiles */,
 				3E1C97972B881FD10092A196 /* Models */,
@@ -168,13 +168,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		3E1C979A2B8820250092A196 /* ViewControllers */ = {
+		3E1C979A2B8820250092A196 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E1C97632B68C2F40092A196 /* ViewController.swift */,
+				3E1C97632B68C2F40092A196 /* UserScoresViewController.swift */,
 				3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +311,7 @@
 				3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */,
 				3ED34E4C2B956A9900355EE5 /* MainTabBarController.swift in Sources */,
 				3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */,
-				3E1C97642B68C2F40092A196 /* ViewController.swift in Sources */,
+				3E1C97642B68C2F40092A196 /* UserScoresViewController.swift in Sources */,
 				3E1C97922B848AC70092A196 /* CodeTrackAPI.swift in Sources */,
 				3E1C97942B848B0B0092A196 /* ScoreboardModel.swift in Sources */,
 				3ED34E4A2B8C2CFE00355EE5 /* UsersStaffModel.swift in Sources */,

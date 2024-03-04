@@ -8,7 +8,7 @@
 import Foundation
 
 class CodeTrackAPI<T: Decodable> {
-    func fetchScoreboard(_ urlStr: String) async throws -> T {
+    func fetchCodeTrack(_ urlStr: String) async throws -> T {
         let url = URL(string: urlStr)!
         var request = URLRequest(url: url)
         request.httpMethod = "Get"

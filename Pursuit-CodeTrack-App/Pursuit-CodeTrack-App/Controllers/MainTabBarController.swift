@@ -10,7 +10,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     public lazy var userScoresViewController: UIViewController =  {
-        let vc = ViewController()
+        let vc = UserScoresViewController()
         vc.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 0)
         return vc
     }()

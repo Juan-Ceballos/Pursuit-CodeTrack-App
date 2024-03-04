@@ -7,11 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserScoresViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemCyan
+        view.backgroundColor = .systemBackground
+        
     }
     
     

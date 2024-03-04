@@ -11,6 +11,8 @@ struct ScoreboardModel: Decodable {
     let id: Int
     let fellowsThisWeek: Int
     let fellowsThisMonth: Int
+    let staffThisWeek: Int
+    let staffThisMonth: Int
     let fellowsAllTime: Int
     let staffAllTime: Int
     let organization: String
@@ -19,6 +21,8 @@ struct ScoreboardModel: Decodable {
         case id
         case fellowsThisWeek = "fellows_this_week"
         case fellowsThisMonth = "fellows_this_month"
+        case staffThisWeek = "staff_this_week"
+        case staffThisMonth = "staff_this_month"
         case fellowsAllTime = "fellows_all_time"
         case staffAllTime = "staff_all_time"
         case organization

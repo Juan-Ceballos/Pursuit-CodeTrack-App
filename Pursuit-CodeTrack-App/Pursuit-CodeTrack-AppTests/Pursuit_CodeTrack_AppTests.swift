@@ -59,7 +59,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         let codeTrackAPI = CodeTrackAPI<ScoreboardModel>()
         Task {
             do {
-                let scoreBoardModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.scoreboard)
+                let scoreBoardModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.scoreboard)
                 let scoreBoardOrganization = scoreBoardModel.organization
                 XCTAssertEqual(expectedScoreboardOrganization, scoreBoardOrganization, "expected string \(expectedScoreboardOrganization) to equal string from model \(scoreBoardOrganization)")
                 exp.fulfill()
@@ -73,11 +73,11 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        let expectedStandingCount = 17
+        let expectedStandingCount = 18
         let codeTrackAPI = CodeTrackAPI<[StandingsModel]>()
         Task {
             do {
-                let standingsModelsWrapper = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.standings)
+                let standingsModelsWrapper = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.standings)
                 let standingsCount = standingsModelsWrapper.count
                 XCTAssertEqual(expectedStandingCount, standingsCount, "expected int \(expectedStandingCount) to equal int from model \(standingsCount)")
                 exp.fulfill()
@@ -92,11 +92,11 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     // Update this test each time there's a new cohort
     func testFetchUsersModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        let expectedUsersCount = 511
+        let expectedUsersCount = 512
         let codeTrackAPI = CodeTrackAPI<UsersModel>()
         Task {
             do {
-                let usersModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.users)
+                let usersModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.users)
                 let usersCount = usersModel.users.count
                 XCTAssertEqual(expectedUsersCount, usersCount, "expected int \(expectedUsersCount) to equal int from model \(usersCount)")
                 exp.fulfill()
@@ -115,7 +115,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         let codeTrackAPI = CodeTrackAPI<UsersStaffModel>()
         Task {
             do {
-                let usersStaffModel = try await codeTrackAPI.fetchScoreboard(CodeTrackURL.role)
+                let usersStaffModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.role)
                 let usersStaffCount = usersStaffModel.users.count
                 XCTAssertEqual(expectedUsersStaffCount, usersStaffCount, "expected int \(expectedUsersStaffCount) to equal int from model \(usersStaffCount)")
                 exp.fulfill()
