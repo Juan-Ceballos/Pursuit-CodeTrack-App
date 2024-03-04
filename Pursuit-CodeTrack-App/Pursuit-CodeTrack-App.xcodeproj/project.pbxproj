@@ -21,6 +21,7 @@
 		3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1C97952B881D6E0092A196 /* StandingsModel.swift */; };
 		3ED34E482B8C2CEB00355EE5 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E472B8C2CEB00355EE5 /* UsersModel.swift */; };
 		3ED34E4A2B8C2CFE00355EE5 /* UsersStaffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E492B8C2CFE00355EE5 /* UsersStaffModel.swift */; };
+		3ED34E4C2B956A9900355EE5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3E1C97952B881D6E0092A196 /* StandingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsModel.swift; sourceTree = "<group>"; };
 		3ED34E472B8C2CEB00355EE5 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
 		3ED34E492B8C2CFE00355EE5 /* UsersStaffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersStaffModel.swift; sourceTree = "<group>"; };
+		3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				3E1C97632B68C2F40092A196 /* ViewController.swift */,
+				3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			files = (
 				3ED34E482B8C2CEB00355EE5 /* UsersModel.swift in Sources */,
 				3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */,
+				3ED34E4C2B956A9900355EE5 /* MainTabBarController.swift in Sources */,
 				3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */,
 				3E1C97642B68C2F40092A196 /* ViewController.swift in Sources */,
 				3E1C97922B848AC70092A196 /* CodeTrackAPI.swift in Sources */,
