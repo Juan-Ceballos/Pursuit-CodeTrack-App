@@ -71,6 +71,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
     
+    // Update this test each time there's an added standing
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedStandingCount = 18
@@ -89,17 +90,18 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
 
-    // Update this test each time there's a new cohort
     func testFetchUsersModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        let expectedUsersCount = 512
+        let expectedUserRole = "fellow"
         let codeTrackAPI = CodeTrackAPI<UsersModel>()
         Task {
             do {
                 let usersModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.users)
-                let usersCount = usersModel.users.count
-                XCTAssertEqual(expectedUsersCount, usersCount, "expected int \(expectedUsersCount) to equal int from model \(usersCount)")
-                exp.fulfill()
+                let users = usersModel.users
+                if let userRole = users.first?.role {
+                    XCTAssertEqual(expectedUserRole, userRole, "expected string \(expectedUserRole) to equal string from model \(userRole)")
+                    exp.fulfill()
+                } else {XCTFail("Found nil when accessing first user in users array for model") }
             } catch {
                 XCTFail("\(error)")
             }
@@ -108,17 +110,19 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
     
-    // Update this test when change in staff
     func testFetchUsersStaffModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        let expectedUsersStaffCount = 20
+        let expectedUserStaffRole = "staff"
         let codeTrackAPI = CodeTrackAPI<UsersStaffModel>()
         Task {
             do {
                 let usersStaffModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.role)
-                let usersStaffCount = usersStaffModel.users.count
-                XCTAssertEqual(expectedUsersStaffCount, usersStaffCount, "expected int \(expectedUsersStaffCount) to equal int from model \(usersStaffCount)")
-                exp.fulfill()
+                let usersStaff = usersStaffModel.users
+                if let usersStaffRole = usersStaffModel.users.first?.role {
+                    XCTAssertEqual(expectedUserStaffRole, usersStaffRole, "expected string \(expectedUserStaffRole) to equal string from model \(usersStaffRole)")
+                    exp.fulfill()
+                } else {XCTFail("Found nil when accessing first user in users array for model")}
+                
             } catch {
                 XCTFail("\(error)")
             }
