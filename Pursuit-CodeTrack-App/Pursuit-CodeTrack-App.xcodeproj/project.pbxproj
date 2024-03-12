@@ -24,6 +24,7 @@
 		3ED34E4C2B956A9900355EE5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */; };
 		3ED34E4F2BA0209C00355EE5 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E4E2BA0209C00355EE5 /* UIViewController+Alerts.swift */; };
 		3ED34E512BA021EA00355EE5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */; };
+		3ED34E532BA0228700355EE5 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E522BA0228700355EE5 /* AppStyling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		3ED34E4B2B956A9900355EE5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3ED34E4E2BA0209C00355EE5 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		3ED34E522BA0228700355EE5 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				3E1C97612B68C2F40092A196 /* SceneDelegate.swift */,
 				3E1C975F2B68C2F30092A196 /* AppDelegate.swift */,
+				3ED34E522BA0228700355EE5 /* AppStyling.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */,
 				3E1C97642B68C2F40092A196 /* UserScoresViewController.swift in Sources */,
 				3ED34E512BA021EA00355EE5 /* UIView+Extensions.swift in Sources */,
+				3ED34E532BA0228700355EE5 /* AppStyling.swift in Sources */,
 				3E1C97922B848AC70092A196 /* CodeTrackAPI.swift in Sources */,
 				3E1C97942B848B0B0092A196 /* ScoreboardModel.swift in Sources */,
 				3ED34E4A2B8C2CFE00355EE5 /* UsersStaffModel.swift in Sources */,
