@@ -74,13 +74,15 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     // Update this test each time there's an added standing
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        let expectedStandingCount = 18
+        //let expectedStandingCount = 18
+        let expectedFirstXValue = "Monday"
         let codeTrackAPI = CodeTrackAPI<[StandingsModel]>()
         Task {
             do {
                 let standingsModelsWrapper = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.standings)
-                let standingsCount = standingsModelsWrapper.count
-                XCTAssertEqual(expectedStandingCount, standingsCount, "expected int \(expectedStandingCount) to equal int from model \(standingsCount)")
+                let standings = standingsModelsWrapper
+                let x = standings.first?.data
+                XCTAssertEqual("expectedFirstXValue", "standingsCount", "expected int \(expectedFirstXValue) to equal int from model \("standingsCount")")
                 exp.fulfill()
             } catch {
                 XCTFail("\(error)")
