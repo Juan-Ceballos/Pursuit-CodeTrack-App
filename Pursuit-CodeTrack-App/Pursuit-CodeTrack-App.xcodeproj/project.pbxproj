@@ -25,6 +25,7 @@
 		3ED34E4F2BA0209C00355EE5 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E4E2BA0209C00355EE5 /* UIViewController+Alerts.swift */; };
 		3ED34E512BA021EA00355EE5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */; };
 		3ED34E532BA0228700355EE5 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E522BA0228700355EE5 /* AppStyling.swift */; };
+		3ED34E582BA024A300355EE5 /* UserScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E572BA024A300355EE5 /* UserScoresView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		3ED34E4E2BA0209C00355EE5 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3ED34E522BA0228700355EE5 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
+		3ED34E572BA024A300355EE5 /* UserScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoresView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		3E1C975E2B68C2F30092A196 /* Pursuit-CodeTrack-App */ = {
 			isa = PBXGroup;
 			children = (
+				3ED34E542BA0242C00355EE5 /* Views */,
 				3ED34E4D2BA0205700355EE5 /* Extensions */,
 				3E1C979A2B8820250092A196 /* Controllers */,
 				3E1C97992B88200A0092A196 /* Network */,
@@ -192,6 +195,14 @@
 				3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3ED34E542BA0242C00355EE5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3ED34E572BA024A300355EE5 /* UserScoresView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				3ED34E4A2B8C2CFE00355EE5 /* UsersStaffModel.swift in Sources */,
 				3E1C97602B68C2F30092A196 /* AppDelegate.swift in Sources */,
 				3E1C97622B68C2F40092A196 /* SceneDelegate.swift in Sources */,
+				3ED34E582BA024A300355EE5 /* UserScoresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
