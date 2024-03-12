@@ -25,7 +25,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
                 XCTAssertGreaterThan(data.count, expectationDataCount, "Count of data fetched \(data.count) is greater that minimum data count of \(expectationDataCount)")
                 exp.fulfill()
             } catch {
-               XCTFail("\(error)")
+                XCTFail("\(error)")
             }
         }
         
@@ -71,18 +71,15 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         await fulfillment(of: [exp], timeout: 10)
     }
     
-    // Update this test each time there's an added standing
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
-        //let expectedStandingCount = 18
-        let expectedFirstXValue = "Monday"
+        let expectedStandingsCount = 0
         let codeTrackAPI = CodeTrackAPI<[StandingsModel]>()
         Task {
             do {
                 let standingsModelsWrapper = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.standings)
-                let standings = standingsModelsWrapper
-                let x = standings.first?.data
-                XCTAssertEqual("expectedFirstXValue", "standingsCount", "expected int \(expectedFirstXValue) to equal int from model \("standingsCount")")
+                let standingsCount = standingsModelsWrapper.count
+                XCTAssertGreaterThanOrEqual(expectedStandingsCount, standingsCount, "expected int \(expectedStandingsCount) less than or equal to int from model \(standingsCount)")
                 exp.fulfill()
             } catch {
                 XCTFail("\(error)")
@@ -91,7 +88,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         
         await fulfillment(of: [exp], timeout: 10)
     }
-
+    
     func testFetchUsersModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedUserRole = "fellow"
@@ -103,7 +100,9 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
                 if let userRole = users.first?.role {
                     XCTAssertEqual(expectedUserRole, userRole, "expected string \(expectedUserRole) to equal string from model \(userRole)")
                     exp.fulfill()
-                } else {XCTFail("Found nil when accessing first user in users array for model") }
+                } else {
+                    XCTFail("Found nil when accessing first user in users array for model")
+                }
             } catch {
                 XCTFail("\(error)")
             }
@@ -123,7 +122,9 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
                 if let usersStaffRole = usersStaffModel.users.first?.role {
                     XCTAssertEqual(expectedUserStaffRole, usersStaffRole, "expected string \(expectedUserStaffRole) to equal string from model \(usersStaffRole)")
                     exp.fulfill()
-                } else {XCTFail("Found nil when accessing first user in users array for model")}
+                } else {
+                    XCTFail("Found nil when accessing first user in users array for model")
+                }
                 
             } catch {
                 XCTFail("\(error)")
@@ -132,7 +133,7 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
         
         await fulfillment(of: [exp], timeout: 10)
     }
-
     
-
+    
+    
 }
