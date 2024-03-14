@@ -17,6 +17,11 @@ class UserScoresView: UIView {
         super.init(coder: coder)
     }
     
+    var userScoresBackgroundView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private func commonInit() {
         
     }
