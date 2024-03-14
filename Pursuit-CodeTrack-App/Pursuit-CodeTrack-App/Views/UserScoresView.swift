@@ -9,20 +9,24 @@ import UIKit
 
 
 class UserScoresView: UIView {
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        commonInit()
     }
     
     var userScoresBackgroundView: UIView = {
         let view = UIView()
+        view.backgroundColor = .systemRed
         return view
     }()
     
     private func commonInit() {
-        
+       pinVCBackground(of: userScoresBackgroundView)
     }
 }

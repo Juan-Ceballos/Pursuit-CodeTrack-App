@@ -8,10 +8,15 @@
 import UIKit
 
 class UserScoresViewController: UIViewController {
+    
+    let userScoreView = UserScoresView()
+    
+    override func loadView() {
+        view = userScoreView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         
     }
     

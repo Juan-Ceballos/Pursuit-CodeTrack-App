@@ -17,6 +17,7 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         viewControllers = [UINavigationController(rootViewController: userScoresViewController)]
     }
 }
