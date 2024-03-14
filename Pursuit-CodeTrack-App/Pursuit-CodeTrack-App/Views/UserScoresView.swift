@@ -10,6 +10,8 @@ import UIKit
 
 class UserScoresView: UIView {
     
+    // 66, 66, 234, rgb
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -22,7 +24,7 @@ class UserScoresView: UIView {
     
     var userScoresBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .systemBackground
         return view
     }()
     
