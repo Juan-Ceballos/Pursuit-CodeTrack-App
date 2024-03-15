@@ -8,7 +8,7 @@
 import Foundation
 
 struct StandingsModelWrapper: Decodable {
-    let StandingsModels: [StandingsModel]
+    let standingsModels: [StandingsModel]
 }
 
 struct StandingsModel: Decodable {

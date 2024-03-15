@@ -56,10 +56,10 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFetchScoreboardModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedScoreboardOrganization = "pursuit"
-        //let codeTrackAPI = CodeTrackAPI.shared.fetchCodeTrack() //<ScoreboardModel>()
+
         Task {
             do {
-                let scoreBoardModel: ScoreboardModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.scoreboard) //codeTrackAPI.fetchCodeTrack(CodeTrackURL.scoreboard)
+                let scoreBoardModel: ScoreboardModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.scoreboard)
                 let scoreBoardOrganization = scoreBoardModel.organization
                 XCTAssertEqual(expectedScoreboardOrganization, scoreBoardOrganization, "expected string \(expectedScoreboardOrganization) to equal string from model \(scoreBoardOrganization)")
                 exp.fulfill()
@@ -74,12 +74,11 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedStandingsCount = 0
-        let codeTrackAPI = CodeTrackAPI()
         Task {
             do {
-                let standingsModelsWrapper = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.standings)
+                let standingsModelsWrapper: [StandingsModel] = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.standings)
                 let standingsCount = standingsModelsWrapper.count
-                XCTAssertGreaterThanOrEqual(expectedStandingsCount, standingsCount, "expected int \(expectedStandingsCount) less than or equal to int from model \(standingsCount)")
+                XCTAssertLessThanOrEqual(expectedStandingsCount, standingsCount, "expected int \(expectedStandingsCount) less than or equal to int from model \(standingsCount)")
                 exp.fulfill()
             } catch {
                 XCTFail("\(error)")
@@ -92,10 +91,9 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFetchUsersModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedUserRole = "fellow"
-        let codeTrackAPI = CodeTrackAPI<UsersModel>()
         Task {
             do {
-                let usersModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.users)
+                let usersModel: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.users)
                 let users = usersModel.users
                 if let userRole = users.first?.role {
                     XCTAssertEqual(expectedUserRole, userRole, "expected string \(expectedUserRole) to equal string from model \(userRole)")
@@ -114,10 +112,9 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFetchUsersStaffModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedUserStaffRole = "staff"
-        let codeTrackAPI = CodeTrackAPI<UsersStaffModel>()
         Task {
             do {
-                let usersStaffModel = try await codeTrackAPI.fetchCodeTrack(CodeTrackURL.role)
+                let usersStaffModel: UsersStaffModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.role)
                 let usersStaff = usersStaffModel.users
                 if let usersStaffRole = usersStaffModel.users.first?.role {
                     XCTAssertEqual(expectedUserStaffRole, usersStaffRole, "expected string \(expectedUserStaffRole) to equal string from model \(usersStaffRole)")
