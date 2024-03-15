@@ -8,7 +8,7 @@
 import UIKit
 
 struct AppColors {
-    static let primaryColor = UIColor.systemBackground
+    static let primaryColor = UIColor.primaryApp
     static let secondaryColor = UIColor.systemBlue
 }
 
