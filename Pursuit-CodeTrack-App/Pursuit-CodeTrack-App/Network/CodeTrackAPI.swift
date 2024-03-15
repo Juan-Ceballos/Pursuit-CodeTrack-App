@@ -7,8 +7,11 @@
 
 import Foundation
 
-class CodeTrackAPI<T: Decodable> {
-    func fetchCodeTrack(_ urlStr: String) async throws -> T {
+class CodeTrackAPI {
+    
+    static let shared = CodeTrackAPI()
+    private init() {}
+    func fetchCodeTrack<T: Decodable>(_ urlStr: String) async throws -> T {
         let url = URL(string: urlStr)!
         var request = URLRequest(url: url)
         request.httpMethod = "Get"

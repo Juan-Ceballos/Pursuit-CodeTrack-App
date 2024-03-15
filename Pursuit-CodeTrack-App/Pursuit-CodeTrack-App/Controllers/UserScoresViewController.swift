@@ -20,6 +20,8 @@ class UserScoresViewController: UIViewController {
         
     }
     
-    
+    func fetchScoreboardData() {
+        
+    }
 }
 
