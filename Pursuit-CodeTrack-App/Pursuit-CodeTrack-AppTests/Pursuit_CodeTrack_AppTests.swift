@@ -74,12 +74,21 @@ final class Pursuit_CodeTrack_AppTests: XCTestCase {
     func testFetchStandingsModel() async {
         let exp = XCTestExpectation(description: "Parsed scoreboard data to model")
         let expectedStandingsCount = 0
+        let expectedStandingAxis = "Monday"
         Task {
             do {
                 let standingsModelsWrapper: [StandingsModel] = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.standings)
-                let standingsCount = standingsModelsWrapper.count
-                XCTAssertLessThanOrEqual(expectedStandingsCount, standingsCount, "expected int \(expectedStandingsCount) less than or equal to int from model \(standingsCount)")
-                exp.fulfill()
+                if standingsModelsWrapper.isEmpty {
+                    exp.fulfill()
+                } else {
+                    if let standingsData = standingsModelsWrapper.first?.data {
+                        let standingsAxis = standingsData.first?.x ?? ""
+                        XCTAssertEqual(expectedStandingAxis, standingsAxis)
+                        exp.fulfill()
+                    } else {
+                       XCTFail()
+                    }
+                }
             } catch {
                 XCTFail("\(error)")
             }
