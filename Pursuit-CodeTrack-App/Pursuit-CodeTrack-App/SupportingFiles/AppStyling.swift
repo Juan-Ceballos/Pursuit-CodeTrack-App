@@ -14,8 +14,11 @@ struct AppColors {
 
 struct AppFonts {
     static let labelFont = UIFont.systemFont(ofSize: 18)
+    static let headerTextFont = UIFont.boldSystemFont(ofSize: 22)
 }
 
 struct AppSizes {
     static let noPadding: CGFloat = 0
+    static let minPadding: CGFloat = 8
 }
+
