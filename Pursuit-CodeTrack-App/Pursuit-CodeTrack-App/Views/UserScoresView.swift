@@ -81,11 +81,10 @@ class UserScoresView: UIView {
         pinVCBackground(of: userScoresBackgroundView)
         setupScoreboardViewConstraints()
         setupScoreboardTitleLabelConstraints()
+        setupScoreboardStackViewConstraints()
         setupWeeklyStackViewConstraints()
         setupMonthlyStackViewConstraints()
         setupAllTimeStackViewConstraints()
-        setupScoreboardStackViewConstraints()
-        
     }
     
     private func setupScoreboardViewConstraints() {
@@ -124,7 +123,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(weeklyStackView)
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalToConstant: 50),
+            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor)
         ])
     }
     
@@ -132,7 +131,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(monthlyStackView)
         monthlyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyStackView.heightAnchor.constraint(equalToConstant: 50),
+            monthlyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor),
         ])
     }
     
@@ -140,7 +139,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(alltimeStackView)
         alltimeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeStackView.heightAnchor.constraint(equalToConstant: 50),
+            alltimeStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor),
         ])
     }
     
