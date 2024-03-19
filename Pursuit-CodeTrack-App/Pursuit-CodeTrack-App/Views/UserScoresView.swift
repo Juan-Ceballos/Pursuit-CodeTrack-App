@@ -54,7 +54,7 @@ class UserScoresView: UIView {
     public lazy var scoreboardStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, alltimeStackView])
         stackView.axis = .horizontal
-        stackView.alignment = .center
+        stackView.alignment = .leading
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -62,21 +62,18 @@ class UserScoresView: UIView {
     public lazy var weeklyStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemRed
-        //stackView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         return stackView
     }()
     
     public lazy var monthlyStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemPurple
-        //stackView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         return stackView
     }()
     
     public lazy var alltimeStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemGreen
-        //stackView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         return stackView
     }()
     
@@ -124,29 +121,26 @@ class UserScoresView: UIView {
     }
     
     private func setupWeeklyStackViewConstraints() {
-        addSubview(weeklyStackView)
+        scoreboardStackView.addSubview(weeklyStackView)
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalToConstant: 50)
-            //weeklyStackView.widthAnchor.constraint(equalToConstant: 50)
+            weeklyStackView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
     private func setupMonthlyStackViewConstraints() {
-        addSubview(monthlyStackView)
+        scoreboardStackView.addSubview(monthlyStackView)
         monthlyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyStackView.heightAnchor.constraint(equalToConstant: 50)
-            //monthlyStackView.widthAnchor.constraint(equalToConstant: 50)
+            monthlyStackView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
     private func setupAllTimeStackViewConstraints() {
-        addSubview(alltimeStackView)
+        scoreboardStackView.addSubview(alltimeStackView)
         alltimeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeStackView.heightAnchor.constraint(equalToConstant: 50)
-            //lltimeStackView.widthAnchor.constraint(equalToConstant: 50)
+            alltimeStackView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
