@@ -123,7 +123,8 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(weeklyStackView)
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor)
+            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
+            //weeklyStackView.
         ])
     }
     
