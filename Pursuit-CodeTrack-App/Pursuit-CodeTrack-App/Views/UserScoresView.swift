@@ -52,26 +52,26 @@ class UserScoresView: UIView {
     }()
     
     public lazy var scoreboardStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, alltimeStackView])
+        let stackView = UIStackView(arrangedSubviews: [weeklyView, monthlyView, alltimeView])
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
         return stackView
     }()
     
-    public lazy var weeklyStackView: UIStackView = {
+    public lazy var weeklyView: UIView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemRed
         return stackView
     }()
     
-    public lazy var monthlyStackView: UIStackView = {
+    public lazy var monthlyView: UIView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemPurple
         return stackView
     }()
     
-    public lazy var alltimeStackView: UIStackView = {
+    public lazy var alltimeView: UIView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemGreen
         return stackView
@@ -82,9 +82,9 @@ class UserScoresView: UIView {
         setupScoreboardViewConstraints()
         setupScoreboardTitleLabelConstraints()
         setupScoreboardStackViewConstraints()
-        setupWeeklyStackViewConstraints()
-        setupMonthlyStackViewConstraints()
-        setupAllTimeStackViewConstraints()
+        setupWeeklyViewConstraints()
+        setupMonthlyViewConstraints()
+        setupAllTimeViewConstraints()
     }
     
     private func setupScoreboardViewConstraints() {
@@ -119,29 +119,29 @@ class UserScoresView: UIView {
         ])
     }
     
-    private func setupWeeklyStackViewConstraints() {
-        scoreboardStackView.addSubview(weeklyStackView)
-        weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupWeeklyViewConstraints() {
+        scoreboardStackView.addSubview(weeklyView)
+        weeklyView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
-            weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor, constant: AppSizes.minPadding)
-            //weeklyStackView.
+            weeklyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
+            weeklyView.widthAnchor.constraint(equalTo: <#T##NSLayoutDimension#>, multiplier: <#T##CGFloat#>)
+            //weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor, constant: AppSizes.minPadding)
         ])
     }
     
-    private func setupMonthlyStackViewConstraints() {
-        scoreboardStackView.addSubview(monthlyStackView)
-        monthlyStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupMonthlyViewConstraints() {
+        scoreboardStackView.addSubview(monthlyView)
+        monthlyView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor),
+            monthlyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
         ])
     }
     
-    private func setupAllTimeStackViewConstraints() {
-        scoreboardStackView.addSubview(alltimeStackView)
-        alltimeStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupAllTimeViewConstraints() {
+        scoreboardStackView.addSubview(alltimeView)
+        alltimeView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor),
+            alltimeView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
         ])
     }
     
