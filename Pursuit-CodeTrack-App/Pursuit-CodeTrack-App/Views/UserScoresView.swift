@@ -77,6 +77,21 @@ class UserScoresView: UIView {
         return stackView
     }()
     
+    public lazy var weeklyLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    public lazy var monthlyLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    public lazy var alltimeLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     private func commonInit() {
         pinVCBackground(of: userScoresBackgroundView)
         setupScoreboardViewConstraints()
@@ -123,9 +138,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(weeklyView)
         weeklyView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
-            weeklyView.widthAnchor.constraint(equalTo: <#T##NSLayoutDimension#>, multiplier: <#T##CGFloat#>)
-            //weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor, constant: AppSizes.minPadding)
+            weeklyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
         ])
     }
     
@@ -133,7 +146,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(monthlyView)
         monthlyView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
+            monthlyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
         ])
     }
     
@@ -141,7 +154,7 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(alltimeView)
         alltimeView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9),
+            alltimeView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
         ])
     }
     

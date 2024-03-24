@@ -9,7 +9,8 @@ import UIKit
 
 struct AppColors {
     static let primaryColor = UIColor.primaryApp
-    static let secondaryColor = UIColor.systemBlue
+    //static let secondaryColor = UIColor.systemBlue
+    static let primaryTextColor = UIColor.white
 }
 
 struct AppFonts {
