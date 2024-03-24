@@ -14,9 +14,9 @@ struct AppColors {
 }
 
 struct AppFonts {
-    static let titleTextFont = UIFont.boldSystemFont(ofSize: 32)
-    static let headerTextFont = UIFont.boldSystemFont(ofSize: 28)
-    static let subHeaderTextFont = UIFont.boldSystemFont(ofSize: 22)
+    static let titleTextFont = UIFont.boldSystemFont(ofSize: 30)
+    static let headerTextFont = UIFont.boldSystemFont(ofSize: 26)
+    static let subHeaderTextFont = UIFont.boldSystemFont(ofSize: 18)
 }
 
 struct AppSizes {

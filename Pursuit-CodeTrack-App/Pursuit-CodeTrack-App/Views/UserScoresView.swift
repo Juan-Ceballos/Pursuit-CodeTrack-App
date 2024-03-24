@@ -52,37 +52,18 @@ class UserScoresView: UIView {
     }()
     
     public lazy var scoreboardStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [weeklyView, monthlyView, alltimeView])
+        let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, alltimeStackView])
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
         return stackView
     }()
     
-    public lazy var weeklyView: UIStackView = {
+    public lazy var weeklyStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [weeklyLabel, weeklyFellowsLabel, weeklyStaffLabel])
-        //stackView.backgroundColor = .systemRed
         stackView.axis = .vertical
         stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        return stackView
-    }()
-    
-    public lazy var monthlyView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [monthlyLabel, monthlyFellowsLabel, monthlyStaffLabel])
-        //stackView.backgroundColor = .systemPurple
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        return stackView
-    }()
-    
-    public lazy var alltimeView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeStaffLabel])
-        //stackView.backgroundColor = .systemGreen
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalSpacing
         return stackView
     }()
     
@@ -96,18 +77,28 @@ class UserScoresView: UIView {
     
     public lazy var weeklyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: 2774"
+        label.text = "Fellows: \n2774"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
     }()
     
     public lazy var weeklyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: 288"
+        label.text = "Staff: \n288"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
+    }()
+    
+    public lazy var monthlyStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [monthlyLabel, monthlyFellowsLabel, monthlyStaffLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        return stackView
     }()
     
     public lazy var monthlyLabel: UILabel = {
@@ -120,18 +111,28 @@ class UserScoresView: UIView {
     
     public lazy var monthlyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: 12225"
+        label.text = "Fellows: \n12225"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
     }()
     
     public lazy var monthlyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: 937"
+        label.text = "Staff: \n937"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
+    }()
+    
+    public lazy var alltimeStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeStaffLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        return stackView
     }()
     
     public lazy var alltimeLabel: UILabel = {
@@ -144,17 +145,19 @@ class UserScoresView: UIView {
     
     public lazy var alltimeFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: 346441"
+        label.text = "Fellows: \n346441"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
     }()
     
     public lazy var alltimeStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: 16323"
+        label.text = "Staff: \n16323"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
+        label.numberOfLines = 0
         return label
     }()
     
@@ -173,9 +176,9 @@ class UserScoresView: UIView {
         scoreboardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scoreboardView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            scoreboardView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
-            scoreboardView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
-            scoreboardView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+            scoreboardView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+            scoreboardView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scoreboardView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.95)
         ])
     }
     
@@ -195,32 +198,32 @@ class UserScoresView: UIView {
         scoreboardStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scoreboardStackView.topAnchor.constraint(equalTo: scoreboardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
-            scoreboardStackView.heightAnchor.constraint(equalTo: scoreboardView.heightAnchor, multiplier: 0.8),
+            scoreboardStackView.heightAnchor.constraint(equalTo: scoreboardView.heightAnchor, multiplier: 0.95),
             scoreboardStackView.widthAnchor.constraint(equalTo: scoreboardView.widthAnchor)
         ])
     }
     
     private func setupWeeklyViewConstraints() {
-        scoreboardStackView.addSubview(weeklyView)
-        weeklyView.translatesAutoresizingMaskIntoConstraints = false
+        scoreboardStackView.addSubview(weeklyStackView)
+        weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
+            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.6)
         ])
     }
     
     private func setupMonthlyViewConstraints() {
-        scoreboardStackView.addSubview(monthlyView)
-        monthlyView.translatesAutoresizingMaskIntoConstraints = false
+        scoreboardStackView.addSubview(monthlyStackView)
+        monthlyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
+            monthlyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.6)
         ])
     }
     
     private func setupAllTimeViewConstraints() {
-        scoreboardStackView.addSubview(alltimeView)
-        alltimeView.translatesAutoresizingMaskIntoConstraints = false
+        scoreboardStackView.addSubview(alltimeStackView)
+        alltimeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.9)
+            alltimeStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.6)
         ])
     }
     
