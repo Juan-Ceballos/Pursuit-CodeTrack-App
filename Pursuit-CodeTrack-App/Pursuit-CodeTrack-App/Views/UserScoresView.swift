@@ -59,19 +59,19 @@ class UserScoresView: UIView {
         return stackView
     }()
     
-    public lazy var weeklyView: UIView = {
+    public lazy var weeklyView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemRed
         return stackView
     }()
     
-    public lazy var monthlyView: UIView = {
+    public lazy var monthlyView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemPurple
         return stackView
     }()
     
-    public lazy var alltimeView: UIView = {
+    public lazy var alltimeView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [])
         stackView.backgroundColor = .systemGreen
         return stackView
@@ -79,16 +79,55 @@ class UserScoresView: UIView {
     
     public lazy var weeklyLabel: UILabel = {
         let label = UILabel()
+        label.text = "Weekly"
+        return label
+    }()
+    
+    public lazy var weeklyFellowsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Fellows: "
+        return label
+    }()
+    
+    public lazy var weeklyStaffLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Staff: "
         return label
     }()
     
     public lazy var monthlyLabel: UILabel = {
         let label = UILabel()
+        label.text = "Monthly"
+        return label
+    }()
+    
+    public lazy var monthlyFellowsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Fellows: "
+        return label
+    }()
+    
+    public lazy var monthlyStaffLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Staff: "
         return label
     }()
     
     public lazy var alltimeLabel: UILabel = {
         let label = UILabel()
+        label.text = "All Time"
+        return label
+    }()
+    
+    public lazy var alltimeFellowsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Fellows: "
+        return label
+    }()
+    
+    public lazy var alltimeStaffLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Staff: "
         return label
     }()
     
