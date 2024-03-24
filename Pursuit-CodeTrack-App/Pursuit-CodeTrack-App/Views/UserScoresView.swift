@@ -60,74 +60,101 @@ class UserScoresView: UIView {
     }()
     
     public lazy var weeklyView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [])
-        stackView.backgroundColor = .systemRed
+        let stackView = UIStackView(arrangedSubviews: [weeklyLabel, weeklyFellowsLabel, weeklyStaffLabel])
+        //stackView.backgroundColor = .systemRed
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
     public lazy var monthlyView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [])
-        stackView.backgroundColor = .systemPurple
+        let stackView = UIStackView(arrangedSubviews: [monthlyLabel, monthlyFellowsLabel, monthlyStaffLabel])
+        //stackView.backgroundColor = .systemPurple
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
     public lazy var alltimeView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [])
-        stackView.backgroundColor = .systemGreen
+        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeStaffLabel])
+        //stackView.backgroundColor = .systemGreen
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
     public lazy var weeklyLabel: UILabel = {
         let label = UILabel()
         label.text = "Weekly"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.headerTextFont
         return label
     }()
     
     public lazy var weeklyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: "
+        label.text = "Fellows: 2774"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     
     public lazy var weeklyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: "
+        label.text = "Staff: 288"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     
     public lazy var monthlyLabel: UILabel = {
         let label = UILabel()
         label.text = "Monthly"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.headerTextFont
         return label
     }()
     
     public lazy var monthlyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: "
+        label.text = "Fellows: 12225"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     
     public lazy var monthlyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: "
+        label.text = "Staff: 937"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     
     public lazy var alltimeLabel: UILabel = {
         let label = UILabel()
         label.text = "All Time"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.headerTextFont
         return label
     }()
     
     public lazy var alltimeFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: "
+        label.text = "Fellows: 346441"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     
     public lazy var alltimeStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: "
+        label.text = "Staff: 16323"
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.subHeaderTextFont
         return label
     }()
     

@@ -10,12 +10,13 @@ import UIKit
 struct AppColors {
     static let primaryColor = UIColor.primaryApp
     //static let secondaryColor = UIColor.systemBlue
-    static let primaryTextColor = UIColor.white
+    static let primaryTextColor = UIColor.primaryText
 }
 
 struct AppFonts {
-    static let labelFont = UIFont.systemFont(ofSize: 18)
-    static let headerTextFont = UIFont.boldSystemFont(ofSize: 22)
+    static let titleTextFont = UIFont.boldSystemFont(ofSize: 32)
+    static let headerTextFont = UIFont.boldSystemFont(ofSize: 28)
+    static let subHeaderTextFont = UIFont.boldSystemFont(ofSize: 22)
 }
 
 struct AppSizes {
