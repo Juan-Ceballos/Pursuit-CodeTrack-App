@@ -43,10 +43,9 @@ class UserScoresViewController: UIViewController {
     func setScoreboardModel() {
         Task {
             await scoreboard = fetchScoreboardData()
+            userScoreView.configure(scoreboardModel: scoreboard!)
         }
     }
-    
-    
     
 }
 

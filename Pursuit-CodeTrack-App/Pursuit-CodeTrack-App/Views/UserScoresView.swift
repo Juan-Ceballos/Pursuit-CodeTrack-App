@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class UserScoresView: UIView {
     
     let width = UIScreen.main.bounds.width
@@ -77,7 +76,7 @@ class UserScoresView: UIView {
     
     public lazy var weeklyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n2774"
+        label.text = "Fellows: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
@@ -86,7 +85,7 @@ class UserScoresView: UIView {
     
     public lazy var weeklyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n288"
+        label.text = "Staff: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
@@ -111,7 +110,7 @@ class UserScoresView: UIView {
     
     public lazy var monthlyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n12225"
+        label.text = "Fellows: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
@@ -120,7 +119,7 @@ class UserScoresView: UIView {
     
     public lazy var monthlyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n937"
+        label.text = "Staff: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
@@ -145,7 +144,7 @@ class UserScoresView: UIView {
     
     public lazy var alltimeFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n346441"
+        label.text = "Fellows: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
@@ -154,12 +153,21 @@ class UserScoresView: UIView {
     
     public lazy var alltimeStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n16323"
+        label.text = "Staff: \n"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
         return label
     }()
+    
+    func configure(scoreboardModel: ScoreboardModel) {
+        weeklyFellowsLabel.text? +=  String(scoreboardModel.fellowsThisWeek)
+        weeklyStaffLabel.text? += String(scoreboardModel.staffThisWeek)
+        monthlyFellowsLabel.text? += String(scoreboardModel.staffThisWeek)
+        monthlyStaffLabel.text? += String(scoreboardModel.staffThisMonth)
+        alltimeFellowsLabel.text? += String(scoreboardModel.fellowsAllTime)
+        alltimeStaffLabel.text? += String(scoreboardModel.staffAllTime)
+    }
     
     private func commonInit() {
         pinVCBackground(of: userScoresBackgroundView)
