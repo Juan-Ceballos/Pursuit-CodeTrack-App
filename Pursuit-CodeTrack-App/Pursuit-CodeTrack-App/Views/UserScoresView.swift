@@ -207,7 +207,8 @@ class UserScoresView: UIView {
         scoreboardStackView.addSubview(weeklyStackView)
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7)
+            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7),
+            weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor, constant: AppSizes.minPadding)
         ])
     }
     
