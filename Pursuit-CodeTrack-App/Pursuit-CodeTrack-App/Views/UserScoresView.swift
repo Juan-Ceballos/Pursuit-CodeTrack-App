@@ -210,7 +210,7 @@ class UserScoresView: UIView {
     func configure(scoreboardModel: ScoreboardModel) {
         weeklyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisWeek)
         weeklyStaffNumberLabel.text? = String(scoreboardModel.staffThisWeek)
-        monthlyFellowsNumberLabel.text? = String(scoreboardModel.staffThisWeek)
+        monthlyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisMonth)
         monthlyStaffNumberLabel.text? = String(scoreboardModel.staffThisMonth)
         alltimeFellowsNumberLabel.text? = String(scoreboardModel.fellowsAllTime)
         alltimeStaffNumberLabel.text? = String(scoreboardModel.staffAllTime)
