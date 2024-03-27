@@ -59,7 +59,7 @@ class UserScoresView: UIView {
     }()
     
     public lazy var weeklyStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [weeklyLabel, weeklyFellowsLabel, weeklyStaffLabel])
+        let stackView = UIStackView(arrangedSubviews: [weeklyLabel, weeklyFellowsLabel, weeklyFellowsNumberLabel, weeklyStaffLabel, weeklyStaffNumberLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
@@ -76,24 +76,39 @@ class UserScoresView: UIView {
     
     public lazy var weeklyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n"
+        label.text = "Fellows:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
-        label.numberOfLines = 0
+        return label
+    }()
+    
+    public lazy var weeklyFellowsNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
         return label
     }()
     
     public lazy var weeklyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n"
+        label.text = "Staff:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
         return label
     }()
     
+    public lazy var weeklyStaffNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
+        return label
+    }()
+    
     public lazy var monthlyStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [monthlyLabel, monthlyFellowsLabel, monthlyStaffLabel])
+        let stackView = UIStackView(arrangedSubviews: [monthlyLabel, monthlyFellowsLabel, monthlyFellowsNumberLabel, monthlyStaffLabel, monthlyStaffNumberLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
@@ -110,24 +125,40 @@ class UserScoresView: UIView {
     
     public lazy var monthlyFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n"
+        label.text = "Fellows:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
+        return label
+    }()
+    
+    public lazy var monthlyFellowsNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
         return label
     }()
     
     public lazy var monthlyStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n"
+        label.text = "Staff:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
         return label
     }()
     
+    public lazy var monthlyStaffNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
+        return label
+    }()
+    
     public lazy var alltimeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeStaffLabel])
+        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeFellowsNumberLabel, alltimeStaffLabel, alltimeStaffNumberLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
@@ -144,29 +175,45 @@ class UserScoresView: UIView {
     
     public lazy var alltimeFellowsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Fellows: \n"
+        label.text = "Fellows:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
+        return label
+    }()
+    
+    public lazy var alltimeFellowsNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
         return label
     }()
     
     public lazy var alltimeStaffLabel: UILabel = {
         let label = UILabel()
-        label.text = "Staff: \n"
+        label.text = "Staff:"
         label.textColor = AppColors.primaryTextColor
         label.font = AppFonts.subHeaderTextFont
         label.numberOfLines = 0
         return label
     }()
     
+    public lazy var alltimeStaffNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = AppColors.primaryTextColor
+        label.font = AppFonts.normalNumberFont
+        return label
+    }()
+    
     func configure(scoreboardModel: ScoreboardModel) {
-        weeklyFellowsLabel.text? +=  String(scoreboardModel.fellowsThisWeek)
-        weeklyStaffLabel.text? += String(scoreboardModel.staffThisWeek)
-        monthlyFellowsLabel.text? += String(scoreboardModel.staffThisWeek)
-        monthlyStaffLabel.text? += String(scoreboardModel.staffThisMonth)
-        alltimeFellowsLabel.text? += String(scoreboardModel.fellowsAllTime)
-        alltimeStaffLabel.text? += String(scoreboardModel.staffAllTime)
+        weeklyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisWeek)
+        weeklyStaffNumberLabel.text? = String(scoreboardModel.staffThisWeek)
+        monthlyFellowsNumberLabel.text? = String(scoreboardModel.staffThisWeek)
+        monthlyStaffNumberLabel.text? = String(scoreboardModel.staffThisMonth)
+        alltimeFellowsNumberLabel.text? = String(scoreboardModel.fellowsAllTime)
+        alltimeStaffNumberLabel.text? = String(scoreboardModel.staffAllTime)
     }
     
     private func commonInit() {
