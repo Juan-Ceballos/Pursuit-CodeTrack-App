@@ -207,6 +207,14 @@ class UserScoresView: UIView {
         return label
     }()
     
+    public lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        layout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height * 0.11)
+        return cv
+    }()
+    
     func configure(scoreboardModel: ScoreboardModel) {
         weeklyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisWeek)
         weeklyStaffNumberLabel.text? = String(scoreboardModel.staffThisWeek)
