@@ -28,6 +28,7 @@ class UserScoresViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setScoreboardModel()
+        userScoreView.collectionView.dataSource = self
     }
     
     func fetchScoreboardData() async -> ScoreboardModel? {
@@ -46,6 +47,27 @@ class UserScoresViewController: UIViewController {
             userScoreView.configure(scoreboardModel: scoreboard!)
         }
     }
+    
+}
+
+extension UserScoresViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserScoreCardCell.reuseId, for: indexPath) as? UserScoreCardCell else {
+            fatalError()
+        }
+        
+        return cell
+    }
+    
     
 }
 

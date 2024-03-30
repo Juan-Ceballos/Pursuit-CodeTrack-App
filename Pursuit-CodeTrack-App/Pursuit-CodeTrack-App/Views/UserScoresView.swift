@@ -207,14 +207,6 @@ class UserScoresView: UIView {
         return label
     }()
     
-    public lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        layout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height * 0.11)
-        return cv
-    }()
-    
     func configure(scoreboardModel: ScoreboardModel) {
         weeklyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisWeek)
         weeklyStaffNumberLabel.text? = String(scoreboardModel.staffThisWeek)
@@ -224,6 +216,15 @@ class UserScoresView: UIView {
         alltimeStaffNumberLabel.text? = String(scoreboardModel.staffAllTime)
     }
     
+    public lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.backgroundColor = .systemPink
+        cv.register(UserScoreCardCell.self, forCellWithReuseIdentifier: "cell")
+        return cv
+    }()
+    
     private func commonInit() {
         pinVCBackground(of: userScoresBackgroundView)
         setupScoreboardViewConstraints()
@@ -232,6 +233,18 @@ class UserScoresView: UIView {
         setupWeeklyViewConstraints()
         setupMonthlyViewConstraints()
         setupAllTimeViewConstraints()
+        setupCollectionViewConstraints()
+    }
+    
+    func setupCollectionViewConstraints() {
+        addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: scoreboardView.bottomAnchor, constant: AppSizes.minPadding),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     private func setupScoreboardViewConstraints() {
