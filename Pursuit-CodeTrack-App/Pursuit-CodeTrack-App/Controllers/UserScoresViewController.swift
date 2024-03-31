@@ -64,7 +64,7 @@ extension UserScoresViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserScoreCardCell.reuseId, for: indexPath) as? UserScoreCardCell else {
             fatalError()
         }
-        
+        cell.backgroundColor = .systemBlue
         return cell
     }
     

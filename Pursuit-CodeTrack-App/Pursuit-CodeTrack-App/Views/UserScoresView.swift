@@ -217,13 +217,29 @@ class UserScoresView: UIView {
     }
     
     public lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        let layout = createLayout()
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemPink
-        cv.register(UserScoreCardCell.self, forCellWithReuseIdentifier: "cell")
+        cv.register(UserScoreCardCell.self, forCellWithReuseIdentifier: UserScoreCardCell.reuseId)
         return cv
     }()
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+        group.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 5
+        section.orthogonalScrollingBehavior = .groupPaging
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
     
     private func commonInit() {
         pinVCBackground(of: userScoresBackgroundView)
@@ -243,7 +259,7 @@ class UserScoresView: UIView {
             collectionView.topAnchor.constraint(equalTo: scoreboardView.bottomAnchor, constant: AppSizes.minPadding),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

@@ -37,7 +37,9 @@ class UserScoreCardCell: UICollectionViewCell {
             cardView.topAnchor.constraint(equalTo: topAnchor),
             cardView.leadingAnchor.constraint(equalTo: leadingAnchor),
             cardView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            cardView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            //cardView.widthAnchor.constraint(equalToConstant: 20),
+            //cardView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 }
