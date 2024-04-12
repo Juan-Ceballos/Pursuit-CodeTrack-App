@@ -229,11 +229,13 @@ class UserScoresView: UIView {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.55), heightDimension: .fractionalHeight(0.5))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-        group.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
-        let section = NSCollectionLayoutSection(group: group)
+        group2.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        
+        let section = NSCollectionLayoutSection(group: group2)
         section.interGroupSpacing = 5
         section.orthogonalScrollingBehavior = .groupPaging
         

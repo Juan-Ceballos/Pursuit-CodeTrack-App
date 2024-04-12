@@ -16,6 +16,11 @@ class UserScoreCardCell: UICollectionViewCell {
         return uiview
     }()
     
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -28,6 +33,7 @@ class UserScoreCardCell: UICollectionViewCell {
     
     private func commonInit() {
         setupCardViewConstraints()
+        setupNameLabelConstraints()
     }
     
     private func setupCardViewConstraints() {
@@ -40,6 +46,15 @@ class UserScoreCardCell: UICollectionViewCell {
             cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
             //cardView.widthAnchor.constraint(equalToConstant: 20),
             //cardView.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
+    
+    private func setupNameLabelConstraints() {
+        cardView.addSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
 }
