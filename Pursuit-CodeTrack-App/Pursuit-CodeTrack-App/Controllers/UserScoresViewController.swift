@@ -75,7 +75,8 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 10
+        // 2d arr of items?
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
