@@ -12,6 +12,7 @@ class UserScoresViewController: UIViewController {
     let userScoreView = UserScoresView()
     var scoreboard: ScoreboardModel?
     var users: [User]?
+    var userSections: [[User]]?
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
