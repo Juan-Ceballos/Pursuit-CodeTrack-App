@@ -51,6 +51,7 @@ class UserScoresViewController: UIViewController {
         }
     }
     
+    // organize users here
     func fetchUsers() async -> [User]? {
         do {
             let userFellows: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.users)
@@ -62,6 +63,7 @@ class UserScoresViewController: UIViewController {
         return nil
     }
     
+    // or here
     func setUsers() {
         Task {
             await users = fetchUsers()
