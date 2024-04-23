@@ -67,10 +67,17 @@ class UserScoresViewController: UIViewController {
     func setUsers() {
         Task {
             await users = fetchUsers()
+            // fellow by alphabet
+            // staff by alphabet
+            
             DispatchQueue.main.async {
                 self.userScoreView.collectionView.reloadData()
             }
         }
+    }
+    
+    func alphabetizeArrays(from names: [String]) -> [[String]] {
+        return [[]]
     }
     
 }
