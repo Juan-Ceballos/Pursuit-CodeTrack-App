@@ -11,8 +11,7 @@ class UserScoresViewController: UIViewController {
     
     let userScoreView = UserScoresView()
     var scoreboard: ScoreboardModel?
-    var users: [User]?
-    var userSections: [[User]]?
+    var users = ["Fellows": [User](), "Staff": [User]()]
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -51,11 +50,13 @@ class UserScoresViewController: UIViewController {
         }
     }
     
-    // organize users here
-    func fetchUsers() async -> [User]? {
+    func fetchUsers() async -> [[User]]? {
         do {
             let userFellows: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.users)
-            return userFellows.users
+            let userStaff: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.role)
+            let fellowsByPoints = userFellows.users.sorted {$0.totalScore > $1.totalScore}
+            let staffByPoints = userStaff.users.sorted {$0.totalScore > $1.totalScore}
+            return [fellowsByPoints, staffByPoints]
         } catch {
             print("\(error)")
         }
@@ -63,20 +64,23 @@ class UserScoresViewController: UIViewController {
         return nil
     }
     
-    // or here
     func setUsers() {
         Task {
-            await users = fetchUsers()
-            // fellow by alphabet
-            // staff by alphabet
-            
+            //await users = fetchUsers()
+            if let allUsers = await fetchUsers() {
+                users["Fellows"] = allUsers[0]
+                users["Staff"] = allUsers[1]
+            } else {
+               print("error")
+            }
             DispatchQueue.main.async {
                 self.userScoreView.collectionView.reloadData()
             }
         }
     }
     
-    func alphabetizeArrays(from names: [String]) -> [[String]] {
+    func organizeArrays(from names: [User]) -> [[String]] {
+        let arrByPointsFellows = names.sorted {$0.totalScore > $1.totalScore}
         return [[]]
     }
     
