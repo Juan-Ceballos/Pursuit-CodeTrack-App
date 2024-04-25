@@ -225,21 +225,23 @@ class UserScoresView: UIView {
     }()
     
     private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.35), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalHeight(0.35))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-        let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
-        group2.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(2.5), heightDimension: .fractionalWidth(0.1))
         
-        let section = NSCollectionLayoutSection(group: group2)
-        section.interGroupSpacing = 5
-        section.orthogonalScrollingBehavior = .groupPaging
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 3)
+        
+           
+        let section = NSCollectionLayoutSection(group: group)
+        //let sec2 = NSCollectionLayoutSection(
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let layout = UICollectionViewCompositionalLayout(section: section)
+        
         return layout
     }
     

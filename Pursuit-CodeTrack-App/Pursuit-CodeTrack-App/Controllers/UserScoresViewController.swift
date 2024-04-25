@@ -85,15 +85,14 @@ extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // 2d arr of items?
-        return 3
+        let totalSections = 1 + ((users["Fellows"]?.count ?? 0) / 3) + ((users["Staff"]?.count ?? 0) / 3)
+        return totalSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section  {
         case 0: return 0
-        case 1: return users["Fellows"]?.count ?? 0
-        case 2: return users["Staff"]?.count ?? 0
-        default: return 0
+        default: return 3
         }
     }
     
@@ -105,10 +104,10 @@ extension UserScoresViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             let leaderItem = users["Leaders"]?[indexPath.row]
-        case 1: 
+        case 1..<((users["Fellows"]?.count ?? 0) / 3):
             let fellowItem = users["Fellows"]?[indexPath.row]
             cell.nameLabel.text = fellowItem?.name
-        case 2: 
+        case ((users["Fellows"]?.count ?? 0) / 3)...:
             let staffItem = users["Staff"]?[indexPath.row]
             cell.nameLabel.text = staffItem?.name
         default: print()
@@ -121,4 +120,3 @@ extension UserScoresViewController: UICollectionViewDataSource {
     
     
 }
-
