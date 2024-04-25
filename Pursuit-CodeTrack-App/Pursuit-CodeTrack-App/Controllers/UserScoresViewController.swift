@@ -11,7 +11,7 @@ class UserScoresViewController: UIViewController {
     
     let userScoreView = UserScoresView()
     var scoreboard: ScoreboardModel?
-    var users = ["Fellows": [User](), "Staff": [User]()]
+    var users = ["Leaders": [User](), "Fellows": [User](), "Staff": [User]()]
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -79,32 +79,43 @@ class UserScoresViewController: UIViewController {
         }
     }
     
-    func organizeArrays(from names: [User]) -> [[String]] {
-        let arrByPointsFellows = names.sorted {$0.totalScore > $1.totalScore}
-        return [[]]
-    }
-    
 }
 
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // 2d arr of items?
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        users?.count ?? 0
-        // based on each arr in matrix
+        switch section  {
+        case 0: return 0
+        case 1: return users["Fellows"]?.count ?? 0
+        case 2: return users["Staff"]?.count ?? 0
+        default: return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserScoreCardCell.reuseId, for: indexPath) as? UserScoreCardCell else {
             fatalError()
         }
+                
+        switch indexPath.section {
+        case 0:
+            let leaderItem = users["Leaders"]?[indexPath.row]
+        case 1: 
+            let fellowItem = users["Fellows"]?[indexPath.row]
+            cell.nameLabel.text = fellowItem?.name
+        case 2: 
+            let staffItem = users["Staff"]?[indexPath.row]
+            cell.nameLabel.text = staffItem?.name
+        default: print()
+        }
+        
         cell.backgroundColor = .systemBlue
-        let userItem = users?[indexPath.row]
-        cell.nameLabel.text = userItem?.name
+        
         return cell
     }
     
