@@ -27,6 +27,7 @@
 		3ED34E532BA0228700355EE5 /* AppStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E522BA0228700355EE5 /* AppStyling.swift */; };
 		3ED34E582BA024A300355EE5 /* UserScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E572BA024A300355EE5 /* UserScoresView.swift */; };
 		3ED34E5A2BB7B43B00355EE5 /* UserScoreCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E592BB7B43B00355EE5 /* UserScoreCardCell.swift */; };
+		3ED34E5C2BDF038500355EE5 /* PrimaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED34E5B2BDF038500355EE5 /* PrimaryExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		3ED34E522BA0228700355EE5 /* AppStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyling.swift; sourceTree = "<group>"; };
 		3ED34E572BA024A300355EE5 /* UserScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoresView.swift; sourceTree = "<group>"; };
 		3ED34E592BB7B43B00355EE5 /* UserScoreCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoreCardCell.swift; sourceTree = "<group>"; };
+		3ED34E5B2BDF038500355EE5 /* PrimaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				3ED34E4E2BA0209C00355EE5 /* UIViewController+Alerts.swift */,
 				3ED34E502BA021EA00355EE5 /* UIView+Extensions.swift */,
+				3ED34E5B2BDF038500355EE5 /* PrimaryExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				3E1C97902B818E410092A196 /* CodeTrackURL.swift in Sources */,
 				3ED34E4C2B956A9900355EE5 /* MainTabBarController.swift in Sources */,
 				3E1C97962B881D6E0092A196 /* StandingsModel.swift in Sources */,
+				3ED34E5C2BDF038500355EE5 /* PrimaryExtensions.swift in Sources */,
 				3E1C97642B68C2F40092A196 /* UserScoresViewController.swift in Sources */,
 				3ED34E512BA021EA00355EE5 /* UIView+Extensions.swift in Sources */,
 				3ED34E532BA0228700355EE5 /* AppStyling.swift in Sources */,

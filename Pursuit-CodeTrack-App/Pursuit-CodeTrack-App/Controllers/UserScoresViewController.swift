@@ -84,39 +84,25 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // 2d arr of items?
-        let totalSections = 1 + ((users["Fellows"]?.count ?? 0) / 3) + ((users["Staff"]?.count ?? 0) / 3)
-        return totalSections
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section  {
-        case 0: return 0
-        default: return 3
-        }
+        users["Fellows"]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserScoreCardCell.reuseId, for: indexPath) as? UserScoreCardCell else {
             fatalError()
         }
                 
-        switch indexPath.section {
-        case 0:
-            let leaderItem = users["Leaders"]?[indexPath.row]
-        case 1..<((users["Fellows"]?.count ?? 0) / 3):
-            let fellowItem = users["Fellows"]?[indexPath.row]
-            cell.nameLabel.text = fellowItem?.name
-        case ((users["Fellows"]?.count ?? 0) / 3)...:
-            let staffItem = users["Staff"]?[indexPath.row]
-            cell.nameLabel.text = staffItem?.name
-        default: print()
-        }
+        let fellowItem = users["Fellows"]?[indexPath.row]
+        cell.nameLabel.text = fellowItem?.name
         
         cell.backgroundColor = .systemBlue
         
         return cell
     }
-    
     
 }
