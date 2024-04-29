@@ -12,6 +12,7 @@ class UserScoresViewController: UIViewController {
     let userScoreView = UserScoresView()
     var scoreboard: ScoreboardModel?
     var users = ["Leaders": [User](), "Fellows": [User](), "Staff": [User]()]
+    var usersGrouped = [[User]]()
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -70,6 +71,7 @@ class UserScoresViewController: UIViewController {
             if let allUsers = await fetchUsers() {
                 users["Fellows"] = allUsers[0]
                 users["Staff"] = allUsers[1]
+                usersGrouped = users["Fellows"]?.chunked(chunkSize: 3) ?? [[User]]()
             } else {
                print("error")
             }
@@ -84,8 +86,7 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let usersGrouped = users["Fellows"]?.chunked(chunkSize: 3)
-        return usersGrouped?.count ?? 0
+        return usersGrouped.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -98,10 +99,9 @@ extension UserScoresViewController: UICollectionViewDataSource {
             fatalError()
         }
         
-        let usersGrouped = users["Fellows"]?.chunked(chunkSize: 3)
         //let fellowItem = users["Fellows"]?[indexPath.row]
-        let fellowItem = usersGrouped?[indexPath.section][indexPath.row]
-        cell.nameLabel.text = fellowItem?.name
+        let fellowItem = usersGrouped[indexPath.section][indexPath.row]
+        cell.nameLabel.text = fellowItem.name
         
         cell.backgroundColor = .systemBlue
         
