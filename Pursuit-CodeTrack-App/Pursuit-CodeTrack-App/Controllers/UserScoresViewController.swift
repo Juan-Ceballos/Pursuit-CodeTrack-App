@@ -84,11 +84,12 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        let usersGrouped = users["Fellows"]?.chunked(chunkSize: 3)
+        return usersGrouped?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        users["Fellows"]?.count ?? 0
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,8 +97,10 @@ extension UserScoresViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserScoreCardCell.reuseId, for: indexPath) as? UserScoreCardCell else {
             fatalError()
         }
-                
-        let fellowItem = users["Fellows"]?[indexPath.row]
+        
+        let usersGrouped = users["Fellows"]?.chunked(chunkSize: 3)
+        //let fellowItem = users["Fellows"]?[indexPath.row]
+        let fellowItem = usersGrouped?[indexPath.section][indexPath.row]
         cell.nameLabel.text = fellowItem?.name
         
         cell.backgroundColor = .systemBlue
