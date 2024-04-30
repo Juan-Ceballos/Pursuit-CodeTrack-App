@@ -9,9 +9,6 @@ import UIKit
 
 class UserScoresView: UIView {
     
-    let width = UIScreen.main.bounds.width
-    let height = UIScreen.main.bounds.height
-    
     override func layoutSubviews() {
         scoreboardView.layer.cornerRadius = 10
     }
@@ -43,7 +40,7 @@ class UserScoresView: UIView {
     
     public lazy var scoreboardView: UIView = {
         let view = UIView()
-        let sbWidth = width * 0.9
+        let sbWidth = AppSizes.screenWidth * 0.9
         let sbHeight = sbWidth * 0.5
         view.frame = CGRect(x: 0, y: 0, width: sbWidth, height: sbHeight)
         view.backgroundColor = .systemBlue

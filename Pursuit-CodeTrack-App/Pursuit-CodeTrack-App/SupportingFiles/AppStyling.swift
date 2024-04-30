@@ -23,5 +23,7 @@ struct AppFonts {
 struct AppSizes {
     static let noPadding: CGFloat = 0
     static let minPadding: CGFloat = 8
+    static let screenWidth = UIScreen.main.bounds.width
+    static let screenHeight = UIScreen.main.bounds.height
 }
 
