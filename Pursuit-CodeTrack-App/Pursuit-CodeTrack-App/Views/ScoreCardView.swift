@@ -7,10 +7,10 @@
 
 import UIKit
 
-class UserScoresView: UIView {
+class ScoreCardView: UIView {
     
     override func layoutSubviews() {
-        scoreboardView.layer.cornerRadius = 10
+        scoreBoardView.layer.cornerRadius = 10
     }
     
     override init(frame: CGRect) {
@@ -23,13 +23,13 @@ class UserScoresView: UIView {
         commonInit()
     }
     
-    var userScoresBackgroundView: UIView = {
+    var scoreCardViewBackground: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
         return view
     }()
     
-    var scoreboardTitleLabel: UILabel = {
+    var scoreBoardTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "ScoreBoard"
         label.textColor = .systemBackground
@@ -38,7 +38,7 @@ class UserScoresView: UIView {
         return label
     }()
     
-    public lazy var scoreboardView: UIView = {
+    public lazy var scoreBoardView: UIView = {
         let view = UIView()
         let sbWidth = AppSizes.screenWidth * 0.9
         let sbHeight = sbWidth * 0.5
@@ -243,7 +243,7 @@ class UserScoresView: UIView {
     }
     
     private func commonInit() {
-        pinVCBackground(of: userScoresBackgroundView)
+        pinVCBackground(of: scoreCardViewBackground)
         setupScoreboardViewConstraints()
         setupScoreboardTitleLabelConstraints()
         setupScoreboardStackViewConstraints()
@@ -257,7 +257,7 @@ class UserScoresView: UIView {
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: scoreboardView.bottomAnchor, constant: AppSizes.minPadding),
+            collectionView.topAnchor.constraint(equalTo: scoreBoardView.bottomAnchor, constant: AppSizes.minPadding),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
@@ -265,34 +265,34 @@ class UserScoresView: UIView {
     }
     
     private func setupScoreboardViewConstraints() {
-        addSubview(scoreboardView)
-        scoreboardView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(scoreBoardView)
+        scoreBoardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreboardView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            scoreboardView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
-            scoreboardView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scoreboardView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.95)
+            scoreBoardView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            scoreBoardView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+            scoreBoardView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scoreBoardView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.95)
         ])
     }
     
     private func setupScoreboardTitleLabelConstraints() {
-        addSubview(scoreboardTitleLabel)
-        scoreboardTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(scoreBoardTitleLabel)
+        scoreBoardTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreboardTitleLabel.leadingAnchor.constraint(equalTo: scoreboardView.leadingAnchor, constant: AppSizes.minPadding),
-            scoreboardTitleLabel.trailingAnchor.constraint(equalTo: scoreboardView.trailingAnchor, constant: -AppSizes.minPadding),
-            scoreboardTitleLabel.centerXAnchor.constraint(equalTo: scoreboardView.centerXAnchor),
-            scoreboardTitleLabel.topAnchor.constraint(equalTo: scoreboardView.topAnchor, constant: AppSizes.minPadding)
+            scoreBoardTitleLabel.leadingAnchor.constraint(equalTo: scoreBoardView.leadingAnchor, constant: AppSizes.minPadding),
+            scoreBoardTitleLabel.trailingAnchor.constraint(equalTo: scoreBoardView.trailingAnchor, constant: -AppSizes.minPadding),
+            scoreBoardTitleLabel.centerXAnchor.constraint(equalTo: scoreBoardView.centerXAnchor),
+            scoreBoardTitleLabel.topAnchor.constraint(equalTo: scoreBoardView.topAnchor, constant: AppSizes.minPadding)
         ])
     }
     
     private func setupScoreboardStackViewConstraints() {
-        scoreboardView.addSubview(scoreboardStackView)
+        scoreBoardView.addSubview(scoreboardStackView)
         scoreboardStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreboardStackView.topAnchor.constraint(equalTo: scoreboardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
-            scoreboardStackView.heightAnchor.constraint(equalTo: scoreboardView.heightAnchor, multiplier: 0.95),
-            scoreboardStackView.widthAnchor.constraint(equalTo: scoreboardView.widthAnchor)
+            scoreboardStackView.topAnchor.constraint(equalTo: scoreBoardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
+            scoreboardStackView.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.95),
+            scoreboardStackView.widthAnchor.constraint(equalTo: scoreBoardView.widthAnchor)
         ])
     }
     
@@ -301,7 +301,7 @@ class UserScoresView: UIView {
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7),
-            weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor, constant: AppSizes.minPadding)
+            weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor)
         ])
     }
     

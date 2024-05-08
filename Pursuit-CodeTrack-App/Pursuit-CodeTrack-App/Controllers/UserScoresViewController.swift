@@ -9,7 +9,7 @@ import UIKit
 
 class UserScoresViewController: UIViewController {
     
-    let userScoreView = UserScoresView()
+    let userScoreView = ScoreCardView()
     var scoreboard: ScoreboardModel?
     var users = ["Leaders": [User](), "Fellows": [User](), "Staff": [User]()]
     var usersGrouped = [[User]]()
@@ -47,7 +47,7 @@ class UserScoresViewController: UIViewController {
     func setScoreboardModel() {
         Task {
             await scoreboard = fetchScoreboardData()
-            userScoreView.configure(scoreboardModel: scoreboard!)
+            userScoreView.configure(scoreboardModel: scoreboard ?? ScoreboardModel(id: 0, fellowsThisWeek: 0, fellowsThisMonth: 0, staffThisWeek: 0, staffThisMonth: 0, fellowsAllTime: 0, staffAllTime: 0, organization: ""))
         }
     }
     
