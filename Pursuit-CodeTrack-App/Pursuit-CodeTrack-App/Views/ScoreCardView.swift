@@ -40,9 +40,9 @@ class ScoreCardView: UIView {
     
     public lazy var scoreBoardView: UIView = {
         let view = UIView()
-        let sbWidth = AppSizes.screenWidth * 0.9
-        let sbHeight = sbWidth * 0.5
-        view.frame = CGRect(x: 0, y: 0, width: sbWidth, height: sbHeight)
+        let scoreBoardViewWidth = AppSizes.screenWidth * 0.9
+        let scoreBoardViewHeight = scoreBoardViewWidth * 0.5
+        view.frame = CGRect(x: 0, y: 0, width: scoreBoardViewWidth, height: scoreBoardViewHeight)
         view.backgroundColor = .systemBlue
         return view
     }()
