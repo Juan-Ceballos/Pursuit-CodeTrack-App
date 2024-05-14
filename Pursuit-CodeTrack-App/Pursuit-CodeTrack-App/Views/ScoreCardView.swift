@@ -47,6 +47,11 @@ class ScoreCardView: UIView {
         return view
     }()
     
+    public lazy var scoreBoardStackViewBackground = {
+        let view = UIView()
+        return view
+    }()
+    
     public lazy var scoreBoardStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, allTimeStackView])
         stackView.axis = .horizontal
@@ -246,6 +251,7 @@ class ScoreCardView: UIView {
         pinVCBackground(of: scoreCardViewBackground)
         setupScoreBoardViewConstraints()
         setupScoreboardTitleLabelConstraints()
+        setupScoreBoardStackViewBackgroundConstraints()
         setupScoreboardStackViewConstraints()
         setupWeeklyViewConstraints()
         setupMonthlyViewConstraints()
@@ -282,17 +288,29 @@ class ScoreCardView: UIView {
             scoreBoardTitleLabel.leadingAnchor.constraint(equalTo: scoreBoardView.leadingAnchor, constant: AppSizes.minPadding),
             scoreBoardTitleLabel.trailingAnchor.constraint(equalTo: scoreBoardView.trailingAnchor, constant: -AppSizes.minPadding),
             scoreBoardTitleLabel.centerXAnchor.constraint(equalTo: scoreBoardView.centerXAnchor),
-            scoreBoardTitleLabel.topAnchor.constraint(equalTo: scoreBoardView.topAnchor, constant: AppSizes.minPadding)
+            scoreBoardTitleLabel.topAnchor.constraint(equalTo: scoreBoardView.topAnchor, constant: AppSizes.minPadding),
+            scoreBoardTitleLabel.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.25)
+        ])
+    }
+    
+    private func setupScoreBoardStackViewBackgroundConstraints() {
+        addSubview(scoreBoardStackViewBackground)
+        scoreBoardStackViewBackground.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scoreBoardStackViewBackground.topAnchor.constraint(equalTo: scoreBoardTitleLabel.bottomAnchor),
+            scoreBoardStackViewBackground.widthAnchor.constraint(equalTo: scoreBoardView.widthAnchor, multiplier: 0.9),
+            scoreBoardStackViewBackground.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.75),
+            scoreBoardStackViewBackground.centerXAnchor.constraint(equalTo: scoreBoardView.centerXAnchor),
         ])
     }
     
     private func setupScoreboardStackViewConstraints() {
-        scoreBoardView.addSubview(scoreBoardStackView)
+        scoreBoardStackViewBackground.addSubview(scoreBoardStackView)
         scoreBoardStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreBoardStackView.topAnchor.constraint(equalTo: scoreBoardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
-            scoreBoardStackView.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.95),
-            scoreBoardStackView.widthAnchor.constraint(equalTo: scoreBoardView.widthAnchor)
+            scoreBoardStackView.topAnchor.constraint(equalTo: scoreBoardStackViewBackground.topAnchor),
+            scoreBoardStackView.heightAnchor.constraint(equalTo: scoreBoardStackViewBackground.heightAnchor),
+            scoreBoardStackView.widthAnchor.constraint(equalTo: scoreBoardStackViewBackground.widthAnchor)
         ])
     }
     
