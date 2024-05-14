@@ -47,8 +47,8 @@ class ScoreCardView: UIView {
         return view
     }()
     
-    public lazy var scoreboardStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, alltimeStackView])
+    public lazy var scoreBoardStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [weeklyStackView, monthlyStackView, allTimeStackView])
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.distribution = .fillEqually
@@ -154,15 +154,15 @@ class ScoreCardView: UIView {
         return label
     }()
     
-    public lazy var alltimeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [alltimeLabel, alltimeFellowsLabel, alltimeFellowsNumberLabel, alltimeStaffLabel, alltimeStaffNumberLabel])
+    public lazy var allTimeStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [allTimeLabel, allTimeFellowsLabel, allTimeFellowsNumberLabel, allTimeStaffLabel, allTimeStaffNumberLabel])
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
         return stackView
     }()
     
-    public lazy var alltimeLabel: UILabel = {
+    public lazy var allTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "All Time"
         label.textColor = AppColors.primaryTextColor
@@ -170,7 +170,7 @@ class ScoreCardView: UIView {
         return label
     }()
     
-    public lazy var alltimeFellowsLabel: UILabel = {
+    public lazy var allTimeFellowsLabel: UILabel = {
         let label = UILabel()
         label.text = "Fellows:"
         label.textColor = AppColors.primaryTextColor
@@ -179,7 +179,7 @@ class ScoreCardView: UIView {
         return label
     }()
     
-    public lazy var alltimeFellowsNumberLabel: UILabel = {
+    public lazy var allTimeFellowsNumberLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textColor = AppColors.primaryTextColor
@@ -187,7 +187,7 @@ class ScoreCardView: UIView {
         return label
     }()
     
-    public lazy var alltimeStaffLabel: UILabel = {
+    public lazy var allTimeStaffLabel: UILabel = {
         let label = UILabel()
         label.text = "Staff:"
         label.textColor = AppColors.primaryTextColor
@@ -196,7 +196,7 @@ class ScoreCardView: UIView {
         return label
     }()
     
-    public lazy var alltimeStaffNumberLabel: UILabel = {
+    public lazy var allTimeStaffNumberLabel: UILabel = {
         let label = UILabel()
         label.text = ""
         label.textColor = AppColors.primaryTextColor
@@ -209,8 +209,8 @@ class ScoreCardView: UIView {
         weeklyStaffNumberLabel.text? = String(scoreboardModel.staffThisWeek)
         monthlyFellowsNumberLabel.text? = String(scoreboardModel.fellowsThisMonth)
         monthlyStaffNumberLabel.text? = String(scoreboardModel.staffThisMonth)
-        alltimeFellowsNumberLabel.text? = String(scoreboardModel.fellowsAllTime)
-        alltimeStaffNumberLabel.text? = String(scoreboardModel.staffAllTime)
+        allTimeFellowsNumberLabel.text? = String(scoreboardModel.fellowsAllTime)
+        allTimeStaffNumberLabel.text? = String(scoreboardModel.staffAllTime)
     }
     
     public lazy var collectionView: UICollectionView = {
@@ -244,7 +244,7 @@ class ScoreCardView: UIView {
     
     private func commonInit() {
         pinVCBackground(of: scoreCardViewBackground)
-        setupScoreboardViewConstraints()
+        setupScoreBoardViewConstraints()
         setupScoreboardTitleLabelConstraints()
         setupScoreboardStackViewConstraints()
         setupWeeklyViewConstraints()
@@ -264,7 +264,7 @@ class ScoreCardView: UIView {
         ])
     }
     
-    private func setupScoreboardViewConstraints() {
+    private func setupScoreBoardViewConstraints() {
         addSubview(scoreBoardView)
         scoreBoardView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -287,37 +287,37 @@ class ScoreCardView: UIView {
     }
     
     private func setupScoreboardStackViewConstraints() {
-        scoreBoardView.addSubview(scoreboardStackView)
-        scoreboardStackView.translatesAutoresizingMaskIntoConstraints = false
+        scoreBoardView.addSubview(scoreBoardStackView)
+        scoreBoardStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreboardStackView.topAnchor.constraint(equalTo: scoreBoardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
-            scoreboardStackView.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.95),
-            scoreboardStackView.widthAnchor.constraint(equalTo: scoreBoardView.widthAnchor)
+            scoreBoardStackView.topAnchor.constraint(equalTo: scoreBoardTitleLabel.bottomAnchor, constant: AppSizes.minPadding),
+            scoreBoardStackView.heightAnchor.constraint(equalTo: scoreBoardView.heightAnchor, multiplier: 0.95),
+            scoreBoardStackView.widthAnchor.constraint(equalTo: scoreBoardView.widthAnchor)
         ])
     }
     
     private func setupWeeklyViewConstraints() {
-        scoreboardStackView.addSubview(weeklyStackView)
+        scoreBoardStackView.addSubview(weeklyStackView)
         weeklyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeklyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7),
-            weeklyStackView.leadingAnchor.constraint(equalTo: scoreboardStackView.leadingAnchor)
+            weeklyStackView.heightAnchor.constraint(equalTo: scoreBoardStackView.heightAnchor, multiplier: 0.7),
+            weeklyStackView.leadingAnchor.constraint(equalTo: scoreBoardStackView.leadingAnchor)
         ])
     }
     
     private func setupMonthlyViewConstraints() {
-        scoreboardStackView.addSubview(monthlyStackView)
+        scoreBoardStackView.addSubview(monthlyStackView)
         monthlyStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            monthlyStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7)
+            monthlyStackView.heightAnchor.constraint(equalTo: scoreBoardStackView.heightAnchor, multiplier: 0.7)
         ])
     }
     
     private func setupAllTimeViewConstraints() {
-        scoreboardStackView.addSubview(alltimeStackView)
-        alltimeStackView.translatesAutoresizingMaskIntoConstraints = false
+        scoreBoardStackView.addSubview(allTimeStackView)
+        allTimeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            alltimeStackView.heightAnchor.constraint(equalTo: scoreboardStackView.heightAnchor, multiplier: 0.7)
+            allTimeStackView.heightAnchor.constraint(equalTo: scoreBoardStackView.heightAnchor, multiplier: 0.7)
         ])
     }
     
