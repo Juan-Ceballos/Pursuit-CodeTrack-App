@@ -72,6 +72,7 @@ class UserScoresViewController: UIViewController {
                 users["Fellows"] = allUsers[0]
                 users["Staff"] = allUsers[1]
                 usersGrouped = users["Fellows"]?.chunked(chunkSize: 3) ?? [[User]]()
+                
             } else {
                print("error")
             }
