@@ -7,18 +7,17 @@
 
 import UIKit
 
-enum SectionType {
-    case leader
-    case fellow
-    case staff
+enum SectionType: String {
+    case leader = "leader"
+    case fellow = "fellow"
+    case staff = "staff"
 }
 
 class UserScoresViewController: UIViewController {
     
     let userScoreView = ScoreCardView()
     var scoreboard: ScoreboardModel?
-    var users = ["Leaders": [User](), "Fellows": [User](), "Staff": [User]()]
-    var usersGrouped = [[User]]()
+    var users = [SectionType.leader: [[User]](), SectionType.fellow: [[User]](), SectionType.staff: [[User]]()]
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -57,13 +56,13 @@ class UserScoresViewController: UIViewController {
         }
     }
     
-    func fetchUsers() async -> [[User]]? {
+    func fetchUsers() async -> (fellows: [User], staff: [User])? {
         do {
             let userFellows: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.users)
             let userStaff: UsersModel = try await CodeTrackAPI.shared.fetchCodeTrack(CodeTrackURL.role)
             let fellowsByPoints = userFellows.users.sorted {$0.totalScore > $1.totalScore}
             let staffByPoints = userStaff.users.sorted {$0.totalScore > $1.totalScore}
-            return [fellowsByPoints, staffByPoints]
+            return (fellowsByPoints, staffByPoints)
         } catch {
             print("\(error)")
         }
@@ -75,9 +74,9 @@ class UserScoresViewController: UIViewController {
         Task {
             //await users = fetchUsers()
             if let allUsers = await fetchUsers() {
-                users["Fellows"] = allUsers[0]
-                users["Staff"] = allUsers[1]
-                usersGrouped = users["Fellows"]?.chunked(chunkSize: 3) ?? [[User]]()
+//                users["Fellows"] = allUsers[0]
+//                users["Staff"] = allUsers[1]
+//                usersGrouped = users["Fellows"]?.chunked(chunkSize: 3) ?? [[User]]()
                 
             } else {
                print("error")
