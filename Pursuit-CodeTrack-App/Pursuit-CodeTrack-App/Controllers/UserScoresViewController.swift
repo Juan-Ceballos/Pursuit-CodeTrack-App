@@ -90,10 +90,7 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return usersGrouped.count
-        // section 0 title
-        // section 4 title
-        // section (fellows + 1) / 3 ???
+        return users[SectionType.leaders]?.count ?? 0 + users[SectionType.fellows]?.count ?? 0 + users[SectionType.staff]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
