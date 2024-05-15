@@ -98,7 +98,21 @@ extension UserScoresViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
+        
+        let numberOfLeaderSections = 1
+        let numberOfFellowSections = users[SectionType.fellows]?.count ?? 0
+        let numberOfStaffSections = users[SectionType.staff]?.count ?? 0
+        
+        // 180 sections 1, 172, 7
+        
+        if section == numberOfFellowSections {
+            return users[SectionType.fellows]?.last?.count ?? 0
+        } else if section == numberOfFellowSections + numberOfStaffSections {
+            return users[SectionType.staff]?.last?.count ?? 0
+        } else {
+            return 3
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,8 +122,9 @@ extension UserScoresViewController: UICollectionViewDataSource {
         }
         
         //let fellowItem = users["Fellows"]?[indexPath.row]
-        let fellowItem = usersGrouped[indexPath.section][indexPath.row]
-        cell.nameLabel.text = fellowItem.name
+        //let fellowItem = usersGrouped[indexPath.section][indexPath.row]
+        //cell.nameLabel.text = fellowItem.name
+        cell.nameLabel.text = "Testing"
         
         cell.backgroundColor = .systemBlue
         
