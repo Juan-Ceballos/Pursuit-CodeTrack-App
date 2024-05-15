@@ -128,6 +128,9 @@ extension UserScoresViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = .systemBlue
         
+        let a = indexPath.item
+        let b = indexPath.section
+        
         return cell
     }
     
