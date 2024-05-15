@@ -8,8 +8,8 @@
 import UIKit
 
 enum SectionType: String {
-    case leader = "leader"
-    case fellow = "fellow"
+    case leaders = "leader"
+    case fellows = "fellow"
     case staff = "staff"
 }
 
@@ -17,7 +17,7 @@ class UserScoresViewController: UIViewController {
     
     let userScoreView = ScoreCardView()
     var scoreboard: ScoreboardModel?
-    var users = [SectionType.leader: [[User]](), SectionType.fellow: [[User]](), SectionType.staff: [[User]]()]
+    var users = [SectionType.leaders: [[User]](), SectionType.fellows: [[User]](), SectionType.staff: [[User]]()]
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -72,12 +72,10 @@ class UserScoresViewController: UIViewController {
     
     func setUsers() {
         Task {
-            //await users = fetchUsers()
             if let allUsers = await fetchUsers() {
-//                users["Fellows"] = allUsers[0]
-//                users["Staff"] = allUsers[1]
-//                usersGrouped = users["Fellows"]?.chunked(chunkSize: 3) ?? [[User]]()
-                
+                users[SectionType.leaders] = Array(allUsers.fellows.prefix(3)).chunked(chunkSize: 3)
+                users[SectionType.fellows] = allUsers.fellows.chunked(chunkSize: 3)
+                users[SectionType.staff] = allUsers.staff.chunked(chunkSize: 3)
             } else {
                print("error")
             }
