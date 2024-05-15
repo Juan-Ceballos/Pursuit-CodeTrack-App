@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum SectionType {
+    case leader
+    case fellow
+    case staff
+}
+
 class UserScoresViewController: UIViewController {
     
     let userScoreView = ScoreCardView()
@@ -88,6 +94,9 @@ extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return usersGrouped.count
+        // section 0 title
+        // section 4 title
+        // section (fellows + 1) / 3 ???
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
