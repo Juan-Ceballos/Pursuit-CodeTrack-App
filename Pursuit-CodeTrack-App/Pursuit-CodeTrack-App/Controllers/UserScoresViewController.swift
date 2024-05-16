@@ -116,15 +116,10 @@ extension UserScoresViewController: UICollectionViewDataSource {
         
         let allUserSections = users[SectionType.allSections]
         let userCardItem = allUserSections?[indexPath.section][indexPath.row]
-        //let fellowItem = users["Fellows"]?[indexPath.row]
-        //let fellowItem = usersGrouped[indexPath.section][indexPath.row]
-        //cell.nameLabel.text = fellowItem.name
+        
         cell.nameLabel.text = userCardItem?.name
         
         cell.backgroundColor = .systemBlue
-        
-        //let a = indexPath.item
-        //let b = indexPath.section
         
         return cell
     }
