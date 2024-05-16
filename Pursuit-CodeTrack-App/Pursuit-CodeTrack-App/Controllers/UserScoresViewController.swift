@@ -11,13 +11,14 @@ enum SectionType: String {
     case leaders = "leader"
     case fellows = "fellow"
     case staff = "staff"
+    case allSections = "allSections"
 }
 
 class UserScoresViewController: UIViewController {
     
     let userScoreView = ScoreCardView()
     var scoreboard: ScoreboardModel?
-    var users = [SectionType.leaders: [[User]](), SectionType.fellows: [[User]](), SectionType.staff: [[User]]()]
+    var users = [SectionType.leaders: [[User]](), SectionType.fellows: [[User]](), SectionType.staff: [[User]](), SectionType.allSections: [[User]]()]
     
     init(scoreboard: ScoreboardModel? = nil) {
         self.scoreboard = scoreboard
@@ -73,9 +74,13 @@ class UserScoresViewController: UIViewController {
     func setUsers() {
         Task {
             if let allUsers = await fetchUsers() {
-                users[SectionType.leaders] = Array(allUsers.fellows.prefix(3)).chunked(chunkSize: 3)
-                users[SectionType.fellows] = allUsers.fellows.chunked(chunkSize: 3)
-                users[SectionType.staff] = allUsers.staff.chunked(chunkSize: 3)
+                let leaders = Array(allUsers.fellows.prefix(3)).chunked(chunkSize: 3)
+                let fellows = allUsers.fellows.chunked(chunkSize: 3)
+                let staff = allUsers.staff.chunked(chunkSize: 3)
+                users[SectionType.leaders] = leaders
+                users[SectionType.fellows] = fellows
+                users[SectionType.staff] = staff
+                users[SectionType.allSections] = leaders + fellows + staff
             } else {
                print("error")
             }
@@ -90,29 +95,15 @@ class UserScoresViewController: UIViewController {
 extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let numberOfLeaderSections = 1
-        let numberOfFellowSections = users[SectionType.fellows]?.count ?? 0
-        let numberOfStaffSections = users[SectionType.staff]?.count ?? 0
+        let allUserSections = users[SectionType.allSections]
         
-        return numberOfLeaderSections + numberOfFellowSections + numberOfStaffSections
+        return allUserSections?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let numberOfLeaderSections = 1
-        let numberOfFellowSections = users[SectionType.fellows]?.count ?? 0
-        let numberOfStaffSections = users[SectionType.staff]?.count ?? 0
-        
-        // 180 sections 1, 172, 7
-        
-        if section == numberOfFellowSections {
-            return users[SectionType.fellows]?.last?.count ?? 0
-        } else if section == numberOfFellowSections + numberOfStaffSections {
-            return users[SectionType.staff]?.last?.count ?? 0
-        } else {
-            return 3
-        }
-        
+        let allUserSections = users[SectionType.allSections]
+
+        return allUserSections?[section].count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
