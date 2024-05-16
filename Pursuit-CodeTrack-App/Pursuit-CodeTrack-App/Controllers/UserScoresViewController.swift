@@ -74,7 +74,9 @@ class UserScoresViewController: UIViewController {
     func setUsers() {
         Task {
             if let allUsers = await fetchUsers() {
-                let leaders = Array(allUsers.fellows.prefix(3)).chunked(chunkSize: 3)
+                // need to do leaders by points this week not all time points
+                let usersByPointsWeek = allUsers.fellows.sorted {$0.pointsThisWeek > $1.pointsThisWeek}
+                let leaders = Array(usersByPointsWeek.prefix(3)).chunked(chunkSize: 3)
                 let fellows = allUsers.fellows.chunked(chunkSize: 3)
                 let staff = allUsers.staff.chunked(chunkSize: 3)
                 users[SectionType.leaders] = leaders
@@ -112,15 +114,17 @@ extension UserScoresViewController: UICollectionViewDataSource {
             fatalError()
         }
         
+        let allUserSections = users[SectionType.allSections]
+        let userCardItem = allUserSections?[indexPath.section][indexPath.row]
         //let fellowItem = users["Fellows"]?[indexPath.row]
         //let fellowItem = usersGrouped[indexPath.section][indexPath.row]
         //cell.nameLabel.text = fellowItem.name
-        cell.nameLabel.text = "Testing"
+        cell.nameLabel.text = userCardItem?.name
         
         cell.backgroundColor = .systemBlue
         
-        let a = indexPath.item
-        let b = indexPath.section
+        //let a = indexPath.item
+        //let b = indexPath.section
         
         return cell
     }

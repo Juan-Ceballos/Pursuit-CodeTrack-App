@@ -16,4 +16,13 @@ struct User: Decodable {
     let name: String
     let role: String
     let totalScore: Int
+    let pointsThisWeek: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case role
+        case totalScore
+        case pointsThisWeek = "points_this_week"
+    }
 }
