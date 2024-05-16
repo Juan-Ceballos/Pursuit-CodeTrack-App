@@ -223,6 +223,7 @@ class ScoreCardView: UIView {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemPink
         cv.register(UserScoreCardCell.self, forCellWithReuseIdentifier: UserScoreCardCell.reuseId)
+        // header kind
         return cv
     }()
     

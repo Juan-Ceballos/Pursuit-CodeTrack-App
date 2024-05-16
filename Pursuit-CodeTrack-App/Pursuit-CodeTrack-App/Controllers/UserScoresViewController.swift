@@ -74,7 +74,6 @@ class UserScoresViewController: UIViewController {
     func setUsers() {
         Task {
             if let allUsers = await fetchUsers() {
-                // need to do leaders by points this week not all time points
                 let usersByPointsWeek = allUsers.fellows.sorted {$0.pointsThisWeek > $1.pointsThisWeek}
                 let leaders = Array(usersByPointsWeek.prefix(3)).chunked(chunkSize: 3)
                 let fellows = allUsers.fellows.chunked(chunkSize: 3)
@@ -98,13 +97,11 @@ extension UserScoresViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let allUserSections = users[SectionType.allSections]
-        
         return allUserSections?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let allUserSections = users[SectionType.allSections]
-
         return allUserSections?[section].count ?? 0
     }
     
@@ -118,7 +115,6 @@ extension UserScoresViewController: UICollectionViewDataSource {
         let userCardItem = allUserSections?[indexPath.section][indexPath.row]
         
         cell.nameLabel.text = userCardItem?.name
-        
         cell.backgroundColor = .systemBlue
         
         return cell
